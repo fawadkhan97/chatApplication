@@ -9,13 +9,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false)
+    @Column(name = "userName" , nullable = false)
     private String userName;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
     private String CNIC;
-    @Column(nullable = true)
+
+    @Column(nullable = false)
     private int age;
 
 
