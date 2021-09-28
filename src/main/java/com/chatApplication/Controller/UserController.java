@@ -16,33 +16,60 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    private static final String defaultAuthValue = "fawad12345";
+
+    public Boolean authorize(String authValue) {
+
+        if (defaultAuthValue.equals(authValue)) {
+            return true;
+
+        } else return false;
+
+    }
 
 
     @GetMapping(" ")
-    public List<User> userList() {
-        return userService.listAllUser();
+    public ResponseEntity<List<User>> userList(@RequestHeader("Authorization") String authValue) {
+
+        if (authorize(authValue)) {
+            List<User> userList = userService.listAllUser();
+            // check if database is empty
+            if (userList.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+
+                return new ResponseEntity<>(userList, HttpStatus.OK);
+            }
+
+        } else return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
-    @PostMapping("/adduser")
-    public void addUser(@RequestBody User user) {
-        userService.saveUser(user);
+    @PostMapping("/add")
+    public ResponseEntity<String> addUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
+        if (authorize(authValue)) {
+            userService.save(user);
+            return new ResponseEntity<>("User added successfully", HttpStatus.OK);
+        } else return new ResponseEntity<>("not authorize ", HttpStatus.FORBIDDEN);
+
     }
 
-    @GetMapping("/getuser/{id}")
-    public ResponseEntity<User> get(@PathVariable Long id) {
-        try {
-            User user = userService.getUser(id);
-            return new ResponseEntity<User>(user, HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/get/{id}")
+    public ResponseEntity<User> get(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
+        if (authorize(authValue)) {
+            try {
+                User user = userService.get(id);
+                return new ResponseEntity<>(user, HttpStatus.OK);
+            } catch (NoSuchElementException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else return new ResponseEntity<>( HttpStatus.FORBIDDEN);
     }
 
-    @PutMapping("/updateuser")
+    @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody User user) {
 
         try {
-            userService.saveUser(user);
+            userService.save(user);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -50,10 +77,8 @@ public class UserController {
 
     }
 
-    @DeleteMapping("deleteuser/{id}")
+    @DeleteMapping("delete/{id}")
     public void delete(@PathVariable Long id) {
-
-
         userService.delete(id);
     }
 

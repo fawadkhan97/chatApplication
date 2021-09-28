@@ -29,7 +29,7 @@ public class ChatController {
     @GetMapping("/get")
     public ResponseEntity<Chat> get(@RequestParam ("question") Long id) {
         try {
-           Chat chat =  chatService.getChat(id);
+           Chat chat =  chatService.get(id);
            return new ResponseEntity<Chat>(chat,HttpStatus.FOUND);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -37,12 +37,12 @@ public class ChatController {
     }
 
 
-    @PostMapping("/addchat")
+    @PostMapping("/add")
     public void add(@RequestBody Chat chat) {
         chatService.save(chat);
     }
 
-    @PutMapping("/updatechat")
+    @PutMapping("/update")
     public ResponseEntity<?> update(@RequestBody Chat chat) {
 
         try {
@@ -53,7 +53,7 @@ public class ChatController {
         }
     }
 
-    @DeleteMapping("/deletechat/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         chatService.delete(id);
     }

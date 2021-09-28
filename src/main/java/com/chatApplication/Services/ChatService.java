@@ -19,7 +19,7 @@ public class ChatService {
         return chatRepository.findAll();
     }
 
-    public Chat getChat(Long id){
+    public Chat get(Long id){
 
        return chatRepository.findById(id).get();
     }
