@@ -5,6 +5,7 @@ import com.chatApplication.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Service
@@ -13,7 +14,7 @@ public class UserService {
      UserRepository userRepository;
 
     public List<User> listAllUser(){
-        return userRepository.findAll();
+        return  userRepository.findAll();
     }
 
     public void save (User user){
