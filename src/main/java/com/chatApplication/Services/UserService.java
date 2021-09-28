@@ -16,6 +16,13 @@ public class UserService {
     public List<User> listAllUser(){
         return  userRepository.findAll();
     }
+    public User get(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+    public User getbyName(String userName){
+        return userRepository.findByuserName(userName);
+    }
 
     public void save (User user){
         userRepository.save(user);
@@ -25,9 +32,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User get(Long id) {
-        return userRepository.findById(id).get();
-    }
+
 
 
 

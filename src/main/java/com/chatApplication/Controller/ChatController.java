@@ -15,17 +15,20 @@ import java.util.NoSuchElementException;
 @RequestMapping("/chat")
 public class ChatController {
     private static final String defaultAuthValue = "chat12345";
+    @Autowired
+    ChatService chatService;
 
+    // check whether user is authorized or not
     public Boolean authorize(String authValue) {
         return defaultAuthValue.equals(authValue);
     }
 
-    @Autowired
-    ChatService chatService;
+
+
 
 
     @GetMapping(" ")
-    public ResponseEntity<Object> chatList(@RequestHeader ("authorization") String authValue ) {
+    public ResponseEntity<Object> chatList(@RequestHeader("authorization") String authValue) {
 
         if (authorize(authValue)) {
             List<Chat> chatList = chatService.listAllChat();
@@ -40,12 +43,11 @@ public class ChatController {
     }
 
 
-
     @GetMapping("/get")
-    public ResponseEntity<Chat> get(@RequestParam ("question") Long id) {
+    public ResponseEntity<Chat> get(@RequestParam("question") Long id) {
         try {
-           Chat chat =  chatService.get(id);
-           return new ResponseEntity<Chat>(chat,HttpStatus.FOUND);
+            Chat chat = chatService.get(id);
+            return new ResponseEntity<Chat>(chat, HttpStatus.FOUND);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -64,13 +66,13 @@ public class ChatController {
     @PutMapping("/update")
     public ResponseEntity<Object> update(@RequestHeader("Authorization") String authValue, @RequestBody Chat chat) {
         if (authorize(authValue)) {
-        try {
-            chatService.save(chat);
-            return new ResponseEntity<>("updated successfully",HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>("User not found ",HttpStatus.NOT_FOUND);
-        }}
-        else return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
+            try {
+                chatService.save(chat);
+                return new ResponseEntity<>("updated successfully", HttpStatus.OK);
+            } catch (NoSuchElementException e) {
+                return new ResponseEntity<>("User not found ", HttpStatus.NOT_FOUND);
+            }
+        } else return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -78,12 +80,10 @@ public class ChatController {
         if (authorize(authValue)) {
             try {
                 chatService.delete(id);
-                return new ResponseEntity<>("User deleted successfully ",HttpStatus.OK);
-            }catch (NoSuchElementException e){
+                return new ResponseEntity<>("User deleted successfully ", HttpStatus.OK);
+            } catch (NoSuchElementException e) {
                 return new ResponseEntity<>("User not found ", HttpStatus.NOT_FOUND);
-
             }
-
         } else return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
     }
 
