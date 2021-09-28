@@ -1,7 +1,6 @@
 package com.chatApplication.Controller;
 
 import com.chatApplication.Model.Chat;
-import com.chatApplication.Model.User;
 import com.chatApplication.Services.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
