@@ -9,12 +9,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "userName" , nullable = false)
+    @Column(unique = true, name = "userName", nullable = false)
     private String userName;
+    @Column(unique = true, nullable = false)
+    private String email;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private String CNIC;
+    private String cnic;
 
     @Column(nullable = false)
     private int age;
@@ -46,11 +48,11 @@ public class User {
     }
 
     public String getCNIC() {
-        return CNIC;
+        return cnic;
     }
 
     public void setCNIC(String CNIC) {
-        this.CNIC = CNIC;
+        this.cnic = CNIC;
     }
 
     public int getAge() {
@@ -59,5 +61,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

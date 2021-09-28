@@ -9,22 +9,13 @@ public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false)
+    @Column(unique = true,nullable = false)
     private String question;
-    @Column(nullable = false)
+    @Column(unique = true,nullable = false)
     private String answer;
-    @Column(nullable = false)
-    private Date qDate;
-    @Column(nullable = false)
-    private Date ansDate;
-public Chat(){};
-    public Chat(long id, String question, String answer, Date qDate, Date ansDate) {
-        this.id = id;
-        this.question = question;
-        this.answer = answer;
-        this.qDate = qDate;
-        this.ansDate = ansDate;
-    }
+    private Date CreatedDate;
+    private Date UpdatedDate;
+
 
     public String getQuestion() {
         return question;
@@ -42,19 +33,27 @@ public Chat(){};
         this.answer = answer;
     }
 
-    public Date getqDate() {
-        return qDate;
+    public long getId() {
+        return id;
     }
 
-    public void setqDate(Date qDate) {
-        this.qDate = qDate;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Date getAnsDate() {
-        return ansDate;
+    public Date getCreatedDate() {
+        return CreatedDate;
     }
 
-    public void setAnsDate(Date ansDate) {
-        this.ansDate = ansDate;
+    public void setCreatedDate(Date createdDate) {
+        CreatedDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return UpdatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        UpdatedDate = updatedDate;
     }
 }

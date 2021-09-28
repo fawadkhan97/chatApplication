@@ -12,11 +12,23 @@ public class UserService {
     @Autowired
      UserRepository userRepository;
 
+    public List<User> listAllUser(){
+        return userRepository.findAll();
+    }
+
     public void saveUser (User user){
         userRepository.save(user);
     }
 
-    public List<User> listAllUser(){
-        return userRepository.findAll();
+    public void delete(Long id){
+        userRepository.deleteById(id);
     }
+
+    public User getUser(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+
+
+
 }
