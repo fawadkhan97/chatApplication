@@ -1,7 +1,6 @@
 package com.chatApplication.Model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "chats")
@@ -13,8 +12,8 @@ public class Chat {
     private String question;
     @Column(unique = true,nullable = false)
     private String answer;
-    private Date CreatedDate;
-    private Date UpdatedDate;
+    private String CreatedDate;
+    private String UpdatedDate;
 
 
     public String getQuestion() {
@@ -41,19 +40,19 @@ public class Chat {
         this.id = id;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return CreatedDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         CreatedDate = createdDate;
     }
 
-    public Date getUpdatedDate() {
+    public String getUpdatedDate() {
         return UpdatedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
+    public void setUpdatedDate(String updatedDate) {
         UpdatedDate = updatedDate;
     }
 }

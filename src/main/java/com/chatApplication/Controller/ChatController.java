@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -15,12 +17,13 @@ import java.util.NoSuchElementException;
 public class ChatController {
 	private static final String defaultAuthValue = "chat12345";
 
-	ChatService chatService;
+private final 	ChatService chatService;
 
-	@Autowired
 	public ChatController(ChatService chatService) {
 		this.chatService = chatService;
 	}
+
+	Date date;
 
 	// check whether user is authorized or not
 	public Boolean authorize(String authValue) {
@@ -57,16 +60,24 @@ public class ChatController {
 	public ResponseEntity<String> addUser(@RequestHeader(required = false,value = "Authorization") String authValue, @RequestBody Chat chat) {
 		// check authorization
 		if (authorize(authValue)) {
+			String pattern = "dd-MM-yy";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			String date = simpleDateFormat.format(new Date());
+			chat.setCreatedDate(date);
 			chatService.save(chat);
 			return new ResponseEntity<>("chat added successfully", HttpStatus.CREATED);
 		} else
-			return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(" not authorized ", HttpStatus.UNAUTHORIZED);
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<Object> update(@RequestHeader(value = "Authorization" , required = false) String authValue, @RequestBody Chat chat) {
 		if (authorize(authValue)) {
 			try {
+				String pattern = "dd-MM-yy";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				chat.setUpdatedDate(date);
 				chatService.save(chat);
 				return new ResponseEntity<>("updated successfully", HttpStatus.OK);
 			} catch (NoSuchElementException e) {

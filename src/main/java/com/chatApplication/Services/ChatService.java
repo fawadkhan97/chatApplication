@@ -26,9 +26,6 @@ public class ChatService {
     }
 
     public void save(Chat chat) {
-
-        chat.setCreatedDate(date = new Date());
-        System.out.println("date is " + date);
         chatRepository.save(chat);
     }
 
