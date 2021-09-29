@@ -13,9 +13,14 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
-	private static final String defaultAuthValue = "chat12344";
-	@Autowired
+	private static final String defaultAuthValue = "chat12345";
+
 	ChatService chatService;
+
+	@Autowired
+	public ChatController(ChatService chatService) {
+		this.chatService = chatService;
+	}
 
 	// check whether user is authorized or not
 	public Boolean authorize(String authValue) {
