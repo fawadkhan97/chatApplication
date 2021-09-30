@@ -1,5 +1,4 @@
 package com.chatApplication.Controller;
-
 import com.chatApplication.Model.User;
 import com.chatApplication.Services.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -120,8 +119,8 @@ public class UserController {
 
 				userService.save(user);
 				return new ResponseEntity<>("Message: User updated successfully ", HttpStatus.OK);
-			} catch (NoSuchElementException e) {
-				return new ResponseEntity<>("Message: User not found incorrect id ", HttpStatus.NOT_FOUND);
+			} catch (Exception e) {
+				return new ResponseEntity<>("Message: incorrect id or Duplicate entry", HttpStatus.NOT_FOUND);
 			}
 		} else
 			return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
