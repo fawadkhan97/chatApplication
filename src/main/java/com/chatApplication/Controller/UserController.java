@@ -2,7 +2,8 @@ package com.chatApplication.Controller;
 
 import com.chatApplication.Model.User;
 import com.chatApplication.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("/user")
 public class UserController {
 
+	private static final Logger LOGGER = LogManager.getLogger(UserController.class);
 
 	UserService userService;
 	private static final String defaultAuthValue = "user12345";
@@ -23,17 +25,29 @@ public class UserController {
 	}
 
 	// check user is authorized or not
+
+	/**
+	 *
+	 * @param authValue
+	 * @return
+	 */
 	public Boolean authorize(String authValue) {
 		return defaultAuthValue.equals(authValue);
 	}
 
+	/**
+	 * @author Fawad Khan
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
 	@GetMapping("/login")
-	public ResponseEntity<String> login(@RequestParam(value = "username") String paramUserName,
-			@RequestParam(value = "password") String paramPassword) {
-		User user = userService.getbyName(paramUserName);
+	public ResponseEntity<String> login(@RequestParam(value = "username") String userName,
+			@RequestParam(value = "password") String password) {
+		User user = userService.getbyName(userName);
 		// check if password and username from parameter is same as db
 		if (user != null) {
-			if (paramUserName.equals(user.getUserName()) && paramPassword.equals(user.getPassword())) {
+			if (userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
 				isLogin = true;
 				return new ResponseEntity<>("Message: login successfully", HttpStatus.OK);
 			}
@@ -52,25 +66,22 @@ public class UserController {
 	@GetMapping("")
 	public ResponseEntity<Object> userList(@RequestHeader(value = "Authorization") String authValue) {
 
-		if (isLogin) {
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				List<User> userList = userService.listAllUser();
+				// check if database is empty
+				if (userList.isEmpty()) {
+					return new ResponseEntity<>("Message: No data available", HttpStatus.NOT_FOUND);
+				} else {
+					return new ResponseEntity<>(userList, HttpStatus.OK);
+				}
 
-			if (authValue != null) {
-				if (authorize(authValue)) {
-					List<User> userList = userService.listAllUser();
-					// check if database is empty
-					if (userList.isEmpty()) {
-						return new ResponseEntity<>("Message: No data available", HttpStatus.NOT_FOUND);
-					} else {
-						return new ResponseEntity<>(userList, HttpStatus.OK);
-					}
-
-				} else
-					return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
-			} else {
-				return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
-			}
+			} else
+				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
-		return new ResponseEntity<>("Message: Please login first", HttpStatus.UNAUTHORIZED);
+
 	}
 
 	@PostMapping("/add")
