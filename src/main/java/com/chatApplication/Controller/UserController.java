@@ -1,4 +1,6 @@
 package com.chatApplication.Controller;
+
+import com.chatApplication.Model.Chat;
 import com.chatApplication.Model.User;
 import com.chatApplication.Services.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -6,6 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -86,55 +91,82 @@ public class UserController {
 	@PostMapping("/add")
 	public ResponseEntity<?> addUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
 		// check authorization
-		if (authorize(authValue)) {
-			try {
-				userService.save(user);
-				return new ResponseEntity<>("Message: User added successfully", HttpStatus.CREATED);
-			} catch (Exception e) {
-				return new ResponseEntity<>("Either username or email already exist .  ", HttpStatus.CONFLICT);
-			}
-		} else
-			return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				try  {
+				 List<Chat> chatList = user.getChats();
+
+				 for(Chat chat: chatList){
+					 String pattern = "dd-M-yyyy hh:mm:ss";
+					 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+					 String date = simpleDateFormat.format(new Date());
+					 chat.setCreatedDate(date);
+				 }
+
+
+					userService.save(user);
+					return new ResponseEntity<>("Message: User added successfully", HttpStatus.CREATED);
+				} catch (Exception e) {
+					return new ResponseEntity<>("Either username or email already exist .  ", HttpStatus.CONFLICT);
+				}
+			} else
+				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
+
 	}
 
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Object> get(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
-		if (authorize(authValue)) {
-			try {
-				User user = userService.get(id);
-				return new ResponseEntity<>(user, HttpStatus.CREATED);
-			} catch (NoSuchElementException e) {
-				return new ResponseEntity<>("Message: User not found incorrect id ", HttpStatus.NOT_FOUND);
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				try {
+					User user = userService.get(id);
+					return new ResponseEntity<>(user, HttpStatus.CREATED);
+				} catch (NoSuchElementException e) {
+					return new ResponseEntity<>("Message: User not found incorrect id ", HttpStatus.NOT_FOUND);
+				}
+			} else {
+				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
-			return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
-
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<Object> update(@RequestHeader("authorization") String authValue, @RequestBody User user) {
-		if (authorize(authValue)) {
-			try {
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				try {
 
-				userService.save(user);
-				return new ResponseEntity<>("Message: User updated successfully ", HttpStatus.OK);
-			} catch (Exception e) {
-				return new ResponseEntity<>("Message: incorrect id or Duplicate entry", HttpStatus.NOT_FOUND);
-			}
-		} else
-			return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
-
+					userService.save(user);
+					return new ResponseEntity<>("Message: User updated successfully ", HttpStatus.OK);
+				} catch (Exception e) {
+					return new ResponseEntity<>("Message: incorrect id or Duplicate entry", HttpStatus.NOT_FOUND);
+				}
+			} else
+				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
 	}
 
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<String> delete(@PathVariable Long id) {
-
-		try {
-			userService.delete(id);
-			return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
-		} catch (NoSuchElementException e) {
-			return new ResponseEntity<>("Message: User not found", HttpStatus.NOT_FOUND);
+	public ResponseEntity<String> delete(@RequestHeader("authorization") String authValue, @PathVariable Long id) {
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				try {
+					userService.delete(id);
+					return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
+				} catch (NoSuchElementException e) {
+					return new ResponseEntity<>("Message: User not found", HttpStatus.NOT_FOUND);
+				}
+			} else
+				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
 	}
 

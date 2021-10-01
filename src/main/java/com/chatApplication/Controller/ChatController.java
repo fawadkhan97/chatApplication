@@ -66,7 +66,7 @@ public class ChatController {
 			@RequestBody Chat chat) {
 		// check authorization
 		if (authorize(authValue)) {
-			String pattern = "dd-MM-yy";
+			String pattern = "dd-M-yyyy hh:mm:ss";
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 			String date = simpleDateFormat.format(new Date());
 			chat.setCreatedDate(date);
@@ -81,7 +81,7 @@ public class ChatController {
 			@RequestBody Chat chat) {
 		if (authorize(authValue)) {
 			try {
-				String pattern = "dd-MM-yy";
+				String pattern = "dd-M-yyyy hh:mm:ss";
 				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 				String date = simpleDateFormat.format(new Date());
 				chat.setUpdatedDate(date);

@@ -1,5 +1,7 @@
 package com.chatApplication.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,15 +10,17 @@ public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column( nullable = false)
+	@Column(nullable = false)
 	private String question;
-	@Column( nullable = false)
+	@Column(nullable = false)
 	private String answer;
 	private String CreatedDate;
 	private String UpdatedDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
+
+
+
+
 
 	public String getQuestion() {
 		return question;
@@ -58,11 +62,4 @@ public class Chat {
 		UpdatedDate = updatedDate;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 }

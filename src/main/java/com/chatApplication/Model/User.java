@@ -1,5 +1,8 @@
 package com.chatApplication.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +25,21 @@ public class User {
 	@Column(nullable = false)
 	private int age;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	List<Chat> chats = new ArrayList<>();
+
+	@OneToMany(targetEntity = Chat.class,fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="user_id", nullable=false)
+	private List<Chat> chats = new ArrayList<>();
 
 	public long getId() {
 		return id;
+	}
+
+	public List<Chat> getChats() {
+		return chats;
+	}
+
+	public void setChats(List<Chat> chats) {
+		this.chats = chats;
 	}
 
 	public void setId(long id) {
@@ -71,13 +84,5 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<Chat> getChats() {
-		return chats;
-	}
-
-	public void setChats(List<Chat> chats) {
-		this.chats = chats;
 	}
 }

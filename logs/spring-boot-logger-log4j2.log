@@ -1,35 +1,71 @@
-2021-09-30 18:56:57,818 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 272 (F:\Devloper\chatApplication\target\classes started by fawad khan in F:\Devloper\chatApplication)
-2021-09-30 18:56:57,818 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-09-30 18:56:59,005 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-09-30 18:56:59,084 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 65 ms. Found 2 JPA repository interfaces.
-2021-09-30 18:56:59,693 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2021-09-30 18:56:59,709 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2021-09-30 18:56:59,709 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-09-30 18:56:59,709 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-09-30 18:56:59,880 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-09-30 18:56:59,880 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1953 ms
-2021-09-30 18:57:00,068 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-09-30 18:57:00,115 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-09-30 18:57:00,365 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-09-30 18:57:00,474 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-09-30 18:57:00,943 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-09-30 18:57:00,974 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2021-09-30 18:57:01,880 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-09-30 18:57:01,896 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-09-30 18:57:02,755 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-09-30 18:57:03,349 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2021-09-30 18:57:03,380 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2021-09-30 18:57:03,380 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
-2021-09-30 18:57:03,396 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2021-09-30 18:57:03,412 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
-2021-09-30 18:57:03,943 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addUserUsingPOST_1
-2021-09-30 18:57:03,943 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: deleteUsingDELETE_1
-2021-09-30 18:57:03,958 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: getUsingGET_1
-2021-09-30 18:57:03,974 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: updateUsingPUT_1
-2021-09-30 18:57:04,005 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 6.67 seconds (JVM running for 9.154)
-2021-09-30 18:57:09,033 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-09-30 18:57:09,033 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2021-09-30 18:57:09,035 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2021-09-30 18:58:14,789 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-09-30 18:59:52,499 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
-2021-09-30 19:00:24,821 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-01 18:32:32,225 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 5580 (F:\Devloper\chatApplication\target\classes started by fawad khan in F:\Devloper\chatApplication)
+2021-10-01 18:32:32,241 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-10-01 18:32:33,553 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-01 18:32:33,631 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 70 ms. Found 2 JPA repository interfaces.
+2021-10-01 18:32:34,334 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-01 18:32:34,580 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-10-01 18:32:34,581 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2200 ms
+2021-10-01 18:32:34,779 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-01 18:32:34,826 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-01 18:32:35,107 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-01 18:32:35,232 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-10-01 18:32:35,623 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-10-01 18:32:35,639 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-10-01 18:32:36,592 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-01 18:32:36,607 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-01 18:32:37,482 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-01 18:32:37,967 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-10-01 18:32:37,982 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-10-01 18:32:37,982 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
+2021-10-01 18:32:37,998 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2021-10-01 18:32:38,014 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
+2021-10-01 18:32:38,529 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addUserUsingPOST_1
+2021-10-01 18:32:38,545 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: deleteUsingDELETE_1
+2021-10-01 18:32:38,545 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: getUsingGET_1
+2021-10-01 18:32:38,576 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: updateUsingPUT_1
+2021-10-01 18:32:38,607 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 6.925 seconds (JVM running for 9.715)
+2021-10-01 18:33:18,380 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-01 18:33:18,380 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-10-01 18:33:18,382 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2021-10-01 18:33:18,557 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-01 18:33:18,658 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] SQL Error: 1062, SQLState: 23000
+2021-10-01 18:33:18,659 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-01 18:33:24,213 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-01 18:33:24,219 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] SQL Error: 1062, SQLState: 23000
+2021-10-01 18:33:24,220 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-01 18:33:42,348 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-01 18:33:42,354 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-3] SQL Error: 1062, SQLState: 23000
+2021-10-01 18:33:42,354 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-3] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-01 18:34:04,307 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-01 18:34:04,312 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] SQL Error: 1062, SQLState: 23000
+2021-10-01 18:34:04,312 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-01 18:35:04,060 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-01 18:35:04,146 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-01 18:35:04,247 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-01 18:35:04,332 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-01 18:35:04,382 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
+2021-10-01 18:35:04,417 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
+2021-10-01 18:35:04,419 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
+2021-10-01 18:39:45,938 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
+2021-10-01 18:39:45,995 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:39:46,011 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:39:46,015 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:39:46,018 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:40:45,818 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [org.springframework.web.bind.MissingRequestHeaderException: Required request header 'authorization' for method parameter type String is not present]
+2021-10-01 18:41:29,470 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select user0_.id as id1_1_1_, user0_.age as age2_1_1_, user0_.cnic as cnic3_1_1_, user0_.email as email4_1_1_, user0_.password as password5_1_1_, user0_.user_name as user_nam6_1_1_, chats1_.user_id as user_id6_0_3_, chats1_.id as id1_0_3_, chats1_.id as id1_0_0_, chats1_.created_date as created_2_0_0_, chats1_.updated_date as updated_3_0_0_, chats1_.answer as answer4_0_0_, chats1_.question as question5_0_0_ from users user0_ left outer join chats chats1_ on user0_.id=chats1_.user_id where user0_.id=?
+2021-10-01 18:41:29,476 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] update chats set created_date=?, updated_date=?, answer=?, question=? where id=?
+2021-10-01 18:41:36,027 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
+2021-10-01 18:41:36,032 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:41:36,036 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:41:36,038 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:41:36,041 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:45:12,478 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] select chat0_.id as id1_0_0_, chat0_.created_date as created_2_0_0_, chat0_.updated_date as updated_3_0_0_, chat0_.answer as answer4_0_0_, chat0_.question as question5_0_0_ from chats chat0_ where chat0_.id=?
+2021-10-01 18:45:12,481 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] update chats set created_date=?, updated_date=?, answer=?, question=? where id=?
+2021-10-01 18:45:21,228 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
+2021-10-01 18:45:21,235 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:45:21,239 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:45:21,241 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-01 18:45:21,245 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
