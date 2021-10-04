@@ -1,71 +1,236 @@
-2021-10-01 18:32:32,225 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 5580 (F:\Devloper\chatApplication\target\classes started by fawad khan in F:\Devloper\chatApplication)
-2021-10-01 18:32:32,241 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-10-01 18:32:33,553 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-10-01 18:32:33,631 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 70 ms. Found 2 JPA repository interfaces.
-2021-10-01 18:32:34,334 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-10-01 18:32:34,366 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-01 18:32:34,580 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-10-01 18:32:34,581 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2200 ms
-2021-10-01 18:32:34,779 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-10-01 18:32:34,826 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-10-01 18:32:35,107 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-10-01 18:32:35,232 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-10-01 18:32:35,623 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-10-01 18:32:35,639 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2021-10-01 18:32:36,592 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-10-01 18:32:36,607 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-10-01 18:32:37,482 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-10-01 18:32:37,967 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2021-10-01 18:32:37,982 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2021-10-01 18:32:37,982 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
-2021-10-01 18:32:37,998 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2021-10-01 18:32:38,014 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
-2021-10-01 18:32:38,529 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addUserUsingPOST_1
-2021-10-01 18:32:38,545 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: deleteUsingDELETE_1
-2021-10-01 18:32:38,545 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: getUsingGET_1
-2021-10-01 18:32:38,576 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: updateUsingPUT_1
-2021-10-01 18:32:38,607 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 6.925 seconds (JVM running for 9.715)
-2021-10-01 18:33:18,380 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-01 18:33:18,380 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2021-10-01 18:33:18,382 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
-2021-10-01 18:33:18,557 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-10-01 18:33:18,658 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] SQL Error: 1062, SQLState: 23000
-2021-10-01 18:33:18,659 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
-2021-10-01 18:33:24,213 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-10-01 18:33:24,219 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] SQL Error: 1062, SQLState: 23000
-2021-10-01 18:33:24,220 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
-2021-10-01 18:33:42,348 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-10-01 18:33:42,354 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-3] SQL Error: 1062, SQLState: 23000
-2021-10-01 18:33:42,354 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-3] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
-2021-10-01 18:34:04,307 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-10-01 18:34:04,312 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] SQL Error: 1062, SQLState: 23000
-2021-10-01 18:34:04,312 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] Duplicate entry '98' for key 'UK_liw8prp235fqaqf988dkosm48'
-2021-10-01 18:35:04,060 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
-2021-10-01 18:35:04,146 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
-2021-10-01 18:35:04,247 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
-2021-10-01 18:35:04,332 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
-2021-10-01 18:35:04,382 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
-2021-10-01 18:35:04,417 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
-2021-10-01 18:35:04,419 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] update chats set user_id=? where id=?
-2021-10-01 18:39:45,938 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
-2021-10-01 18:39:45,995 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:39:46,011 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:39:46,015 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:39:46,018 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:40:45,818 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [org.springframework.web.bind.MissingRequestHeaderException: Required request header 'authorization' for method parameter type String is not present]
-2021-10-01 18:41:29,470 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select user0_.id as id1_1_1_, user0_.age as age2_1_1_, user0_.cnic as cnic3_1_1_, user0_.email as email4_1_1_, user0_.password as password5_1_1_, user0_.user_name as user_nam6_1_1_, chats1_.user_id as user_id6_0_3_, chats1_.id as id1_0_3_, chats1_.id as id1_0_0_, chats1_.created_date as created_2_0_0_, chats1_.updated_date as updated_3_0_0_, chats1_.answer as answer4_0_0_, chats1_.question as question5_0_0_ from users user0_ left outer join chats chats1_ on user0_.id=chats1_.user_id where user0_.id=?
-2021-10-01 18:41:29,476 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] update chats set created_date=?, updated_date=?, answer=?, question=? where id=?
-2021-10-01 18:41:36,027 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
-2021-10-01 18:41:36,032 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:41:36,036 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:41:36,038 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:41:36,041 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:45:12,478 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] select chat0_.id as id1_0_0_, chat0_.created_date as created_2_0_0_, chat0_.updated_date as updated_3_0_0_, chat0_.answer as answer4_0_0_, chat0_.question as question5_0_0_ from chats chat0_ where chat0_.id=?
-2021-10-01 18:45:12,481 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] update chats set created_date=?, updated_date=?, answer=?, question=? where id=?
-2021-10-01 18:45:21,228 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select user0_.id as id1_1_, user0_.age as age2_1_, user0_.cnic as cnic3_1_, user0_.email as email4_1_, user0_.password as password5_1_, user0_.user_name as user_nam6_1_ from users user0_
-2021-10-01 18:45:21,235 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:45:21,239 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:45:21,241 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
-2021-10-01 18:45:21,245 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] select chats0_.user_id as user_id6_0_0_, chats0_.id as id1_0_0_, chats0_.id as id1_0_1_, chats0_.created_date as created_2_0_1_, chats0_.updated_date as updated_3_0_1_, chats0_.answer as answer4_0_1_, chats0_.question as question5_0_1_ from chats chats0_ where chats0_.user_id=?
+2021-10-04 18:28:50,859 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 6812 (F:\Devloper\chatApplication\target\classes started by fawad khan in F:\Devloper\chatApplication)
+2021-10-04 18:28:50,875 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-10-04 18:28:52,218 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-04 18:28:52,312 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 75 ms. Found 3 JPA repository interfaces.
+2021-10-04 18:28:52,937 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-10-04 18:28:52,953 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-10-04 18:28:52,953 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-10-04 18:28:52,953 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-04 18:28:53,125 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-10-04 18:28:53,125 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2063 ms
+2021-10-04 18:28:53,312 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-04 18:28:53,359 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-04 18:28:53,609 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-04 18:28:53,718 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-10-04 18:28:54,078 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-10-04 18:28:54,109 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-10-04 18:28:54,906 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table chats drop foreign key FKmolqi1xj49bg3jjr33674limy
+2021-10-04 18:28:54,937 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "alter table chats drop foreign key FKmolqi1xj49bg3jjr33674limy" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table chats drop foreign key FKmolqi1xj49bg3jjr33674limy" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
+	at com.chatApplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.chats' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 35 more
+2021-10-04 18:28:54,937 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users_categories drop foreign key FK5ctr8c7vf7jr9s5hq2fc081nx
+2021-10-04 18:28:54,937 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "alter table users_categories drop foreign key FK5ctr8c7vf7jr9s5hq2fc081nx" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table users_categories drop foreign key FK5ctr8c7vf7jr9s5hq2fc081nx" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
+	at com.chatApplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.users_categories' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 35 more
+2021-10-04 18:28:54,953 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users_categories drop foreign key FK9nit8oweucmsyrcj5syixrkfw
+2021-10-04 18:28:54,953 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "alter table users_categories drop foreign key FK9nit8oweucmsyrcj5syixrkfw" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table users_categories drop foreign key FK9nit8oweucmsyrcj5syixrkfw" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
+	at com.chatApplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.users_categories' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
+	... 35 more
+2021-10-04 18:28:54,953 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists categories
+2021-10-04 18:28:54,953 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists chats
+2021-10-04 18:28:54,953 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists users
+2021-10-04 18:28:54,953 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists users_categories
+2021-10-04 18:28:54,968 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table categories (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=InnoDB
+2021-10-04 18:28:55,390 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table chats (id bigint not null auto_increment, created_date varchar(255), updated_date varchar(255), answer varchar(255) not null, question varchar(255) not null, user_id bigint not null, primary key (id)) engine=InnoDB
+2021-10-04 18:28:55,656 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table users (id bigint not null auto_increment, age integer not null, cnic varchar(255) not null, email varchar(255) not null, password varchar(255) not null, user_name varchar(255) not null, primary key (id)) engine=InnoDB
+2021-10-04 18:28:56,031 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table users_categories (user_id bigint not null, category_id bigint not null) engine=InnoDB
+2021-10-04 18:28:56,468 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table categories add constraint UK_t8o6pivur7nn124jehx7cygw5 unique (name)
+2021-10-04 18:28:56,703 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users add constraint UK_liw8prp235fqaqf988dkosm48 unique (cnic)
+2021-10-04 18:28:56,968 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+2021-10-04 18:28:57,343 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users add constraint UK_k8d0f2n7n88w1a16yhua64onx unique (user_name)
+2021-10-04 18:28:57,578 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table chats add constraint FKmolqi1xj49bg3jjr33674limy foreign key (user_id) references users (id)
+2021-10-04 18:28:58,296 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users_categories add constraint FK5ctr8c7vf7jr9s5hq2fc081nx foreign key (category_id) references categories (id)
+2021-10-04 18:28:59,125 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table users_categories add constraint FK9nit8oweucmsyrcj5syixrkfw foreign key (user_id) references users (id)
+2021-10-04 18:29:00,062 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-04 18:29:00,078 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-04 18:29:00,812 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-04 18:29:01,406 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-10-04 18:29:01,437 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-10-04 18:29:01,437 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
+2021-10-04 18:29:01,468 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2021-10-04 18:29:01,749 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
+2021-10-04 18:29:02,140 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addUserUsingPOST_1
+2021-10-04 18:29:02,156 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: deleteUsingDELETE_1
+2021-10-04 18:29:02,171 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: getUsingGET_1
+2021-10-04 18:29:02,203 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: updateUsingPUT_1
+2021-10-04 18:29:02,249 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 12.109 seconds (JVM running for 14.544)
+2021-10-04 18:29:33,168 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-04 18:29:33,169 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-10-04 18:29:33,171 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2021-10-04 18:29:33,352 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select user0_.id as id1_2_, user0_.age as age2_2_, user0_.cnic as cnic3_2_, user0_.email as email4_2_, user0_.password as password5_2_, user0_.user_name as user_nam6_2_ from users user0_
+2021-10-04 18:29:36,891 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:29:36,902 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into categories (name) values (?)
+2021-10-04 18:29:36,906 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-04 18:29:36,930 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into users_categories (user_id, category_id) values (?, ?)
+2021-10-04 18:29:36,935 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] update chats set user_id=? where id=?
+2021-10-04 18:30:02,487 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:02,556 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into categories (name) values (?)
+2021-10-04 18:30:02,559 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:02,672 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into users_categories (user_id, category_id) values (?, ?)
+2021-10-04 18:30:02,748 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] update chats set user_id=? where id=?
+2021-10-04 18:30:06,783 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-5] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:06,809 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-5] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:30:06,809 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-5] Duplicate entry '12321' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:30:27,180 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:27,186 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] insert into categories (name) values (?)
+2021-10-04 18:30:27,187 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-6] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:30:27,188 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-6] Duplicate entry 'newcat1' for key 'UK_t8o6pivur7nn124jehx7cygw5'
+2021-10-04 18:30:32,352 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:32,367 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into categories (name) values (?)
+2021-10-04 18:30:32,367 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into chats (created_date, updated_date, answer, question, user_id) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:32,516 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into users_categories (user_id, category_id) values (?, ?)
+2021-10-04 18:30:32,517 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] update chats set user_id=? where id=?
+2021-10-04 18:30:45,194 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:30:45,197 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-8] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:30:45,197 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-8] Duplicate entry 'm,xzcm,12' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:31:17,723 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-9] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:31:17,754 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-9] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:31:17,755 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-9] Duplicate entry 'm,xzcm,12' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:31:39,262 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-10] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:31:39,268 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-10] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:31:39,269 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-10] Duplicate entry 'm,xzcm,12' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:31:46,099 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-2] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:31:46,099 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:31:46,099 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-2] Duplicate entry 'm,xzcm,12' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:31:48,561 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] insert into users (age, cnic, email, password, user_name) values (?, ?, ?, ?, ?)
+2021-10-04 18:31:48,566 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] SQL Error: 1062, SQLState: 23000
+2021-10-04 18:31:48,567 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-1] Duplicate entry 'm,xzcm,12' for key 'UK_liw8prp235fqaqf988dkosm48'
+2021-10-04 18:32:53,373 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select category0_.id as id1_0_, category0_.name as name2_0_ from categories category0_
+2021-10-04 18:32:53,384 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select userlist0_.category_id as category2_3_0_, userlist0_.user_id as user_id1_3_0_, user1_.id as id1_2_1_, user1_.age as age2_2_1_, user1_.cnic as cnic3_2_1_, user1_.email as email4_2_1_, user1_.password as password5_2_1_, user1_.user_name as user_nam6_2_1_ from users_categories userlist0_ inner join users user1_ on userlist0_.user_id=user1_.id where userlist0_.category_id=?
+2021-10-04 18:32:53,399 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select categoryli0_.user_id as user_id1_3_0_, categoryli0_.category_id as category2_3_0_, category1_.id as id1_0_1_, category1_.name as name2_0_1_ from users_categories categoryli0_ inner join categories category1_ on categoryli0_.category_id=category1_.id where categoryli0_.user_id=?
+2021-10-04 18:32:53,402 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select userlist0_.category_id as category2_3_0_, userlist0_.user_id as user_id1_3_0_, user1_.id as id1_2_1_, user1_.age as age2_2_1_, user1_.cnic as cnic3_2_1_, user1_.email as email4_2_1_, user1_.password as password5_2_1_, user1_.user_name as user_nam6_2_1_ from users_categories userlist0_ inner join users user1_ on userlist0_.user_id=user1_.id where userlist0_.category_id=?
+2021-10-04 18:32:53,405 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select categoryli0_.user_id as user_id1_3_0_, categoryli0_.category_id as category2_3_0_, category1_.id as id1_0_1_, category1_.name as name2_0_1_ from users_categories categoryli0_ inner join categories category1_ on categoryli0_.category_id=category1_.id where categoryli0_.user_id=?
+2021-10-04 18:32:53,408 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select userlist0_.category_id as category2_3_0_, userlist0_.user_id as user_id1_3_0_, user1_.id as id1_2_1_, user1_.age as age2_2_1_, user1_.cnic as cnic3_2_1_, user1_.email as email4_2_1_, user1_.password as password5_2_1_, user1_.user_name as user_nam6_2_1_ from users_categories userlist0_ inner join users user1_ on userlist0_.user_id=user1_.id where userlist0_.category_id=?
+2021-10-04 18:32:53,411 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] select categoryli0_.user_id as user_id1_3_0_, categoryli0_.category_id as category2_3_0_, category1_.id as id1_0_1_, category1_.name as name2_0_1_ from users_categories categoryli0_ inner join categories category1_ on categoryli0_.category_id=category1_.id where categoryli0_.user_id=?

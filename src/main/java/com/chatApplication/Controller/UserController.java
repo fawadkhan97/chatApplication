@@ -1,18 +1,19 @@
 package com.chatApplication.Controller;
 
-import com.chatApplication.Model.Chat;
-import com.chatApplication.Model.User;
-import com.chatApplication.Services.UserService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.NoSuchElementException;
+import com.chatApplication.Model.Chat;
+import com.chatApplication.Model.User;
+import com.chatApplication.Services.UserService;
 
 @RestController
 @RequestMapping("/user")
@@ -22,7 +23,7 @@ public class UserController {
 
 	UserService userService;
 	private static final String defaultAuthValue = "user12345";
-	private static boolean isLogin = false;
+	private boolean isLogin = false;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -31,7 +32,6 @@ public class UserController {
 	// check user is authorized or not
 
 	/**
-	 *
 	 * @param authValue
 	 * @return
 	 */
@@ -40,10 +40,9 @@ public class UserController {
 	}
 
 	/**
-	 * @author Fawad Khan
 	 * @param userName
 	 * @param password
-	 * @return
+	 * @author Fawad Khan
 	 */
 	@GetMapping("/login")
 	public ResponseEntity<String> login(@RequestParam(value = "username") String userName,
@@ -72,14 +71,7 @@ public class UserController {
 
 		if (authValue != null) {
 			if (authorize(authValue)) {
-				List<User> userList = userService.listAllUser();
-				// check if database is empty
-				if (userList.isEmpty()) {
-					return new ResponseEntity<>("Message: No data available", HttpStatus.NOT_FOUND);
-				} else {
-					return new ResponseEntity<>(userList, HttpStatus.OK);
-				}
-
+				return userService.listAllUser();
 			} else
 				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
 		} else {
@@ -93,17 +85,17 @@ public class UserController {
 		// check authorization
 		if (authValue != null) {
 			if (authorize(authValue)) {
-				try  {
-				 List<Chat> chatList = user.getChats();
-
-				 for(Chat chat: chatList){
-					 String pattern = "dd-M-yyyy hh:mm:ss";
-					 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-					 String date = simpleDateFormat.format(new Date());
-					 chat.setCreatedDate(date);
-				 }
-
-
+				try {
+					List<Chat> chatList = user.getChats();
+					// insert created date to chats
+					if (!chatList.isEmpty()) {
+						for (Chat chat : chatList) {
+							String pattern = "dd-M-yyyy hh:mm:ss";
+							SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+							String date = simpleDateFormat.format(new Date());
+							chat.setCreatedDate(date);
+						}
+					}
 					userService.save(user);
 					return new ResponseEntity<>("Message: User added successfully", HttpStatus.CREATED);
 				} catch (Exception e) {
@@ -115,6 +107,22 @@ public class UserController {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
 
+	}
+
+	@PostMapping("/add/{userid}/chat")
+	public ResponseEntity<Object> addUserChat(@RequestHeader("Authorization") String authvalue,
+			@PathVariable Long userid, @RequestBody List<Chat> chatList) {
+
+		Boolean addResponse;
+		if (chatList.isEmpty()) {
+			return new ResponseEntity<>("Empty chat list provided", HttpStatus.METHOD_NOT_ALLOWED);
+		}
+
+		addResponse = userService.addChatByID(userid, chatList);
+		if (addResponse) {
+			return new ResponseEntity<>("Chat added succesfully", HttpStatus.OK);
+		} else
+			return new ResponseEntity<>(" User doesnot exist or incorrect id", HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping("/get/{id}")

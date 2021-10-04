@@ -1,11 +1,14 @@
 package com.chatApplication.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "chats")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +65,14 @@ public class Chat {
 		UpdatedDate = updatedDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Chat{" +
+				"id=" + id +
+				", question='" + question + '\'' +
+				", answer='" + answer + '\'' +
+				", CreatedDate='" + CreatedDate + '\'' +
+				", UpdatedDate='" + UpdatedDate + '\'' +
+				'}';
+	}
 }
