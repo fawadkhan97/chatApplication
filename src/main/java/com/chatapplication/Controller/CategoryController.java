@@ -1,23 +1,23 @@
-package com.chatApplication.Controller;
-
-import com.chatApplication.Model.Category;
-import com.chatApplication.Services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+package com.chatapplication.Controller;
+import com.chatapplication.Model.Category;
+import com.chatapplication.Services.CategoryService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
 
-	final private CategoryService categoryService;
+	 private final CategoryService categoryService;
 
 	public CategoryController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 
 	@GetMapping("")
-	public void listAllCategories() {
-		categoryService.listAllCategories();
+	public List<Category> listAllCategories() {
+		return categoryService.listAllCategories();
 
 	}
 

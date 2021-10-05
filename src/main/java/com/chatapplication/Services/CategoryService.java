@@ -1,9 +1,10 @@
-package com.chatApplication.Services;
+package com.chatapplication.Services;
 
-import com.chatApplication.Model.Category;
-import com.chatApplication.Repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.chatapplication.Model.Category;
+import com.chatapplication.Repository.CategoryRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CategoryService {
@@ -15,9 +16,9 @@ public class CategoryService {
 	}
 
 
-	public void listAllCategories() {
+	public List<Category> listAllCategories() {
 
-		categoryRepository.findAll();
+		return categoryRepository.findAll();
 	}
 
 	public Category addCategory(Category category){

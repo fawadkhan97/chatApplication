@@ -1,8 +1,5 @@
-package com.chatApplication.Model;
+package com.chatapplication.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,10 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "chats")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class Chat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +25,6 @@ public class Chat {
         CreatedDate = createdDate;
         UpdatedDate = updatedDate;
     }
+
+    public Chat(){}
 }

@@ -1,16 +1,14 @@
-package com.chatApplication.Services;
-
-import com.chatApplication.Controller.UserController;
-import com.chatApplication.Model.Chat;
-import com.chatApplication.Model.User;
-import com.chatApplication.Repository.ChatRepository;
-import com.chatApplication.Repository.UserRepository;
+package com.chatapplication.Services;
+import com.chatapplication.Controller.UserController;
+import com.chatapplication.Model.Chat;
+import com.chatapplication.Model.User;
+import com.chatapplication.Repository.ChatRepository;
+import com.chatapplication.Repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +30,7 @@ public class UserService {
 	// Get list of all users
 	public ResponseEntity<Object> listAllUser() {
 		List<User> userList = userRepository.findAll();
+		LOGGER.info(userList);
 		// check if database is empty
 		if (userList.isEmpty()) {
 			return new ResponseEntity<>("Message: No data available", HttpStatus.NOT_FOUND);
@@ -79,8 +78,11 @@ public class UserService {
 		return userRepository.findByUserName(userName);
 	}
 
-	public void save(User user) {
-		userRepository.save(user);
+	public User save(User user) {
+
+		user.toString();
+
+		return userRepository.save(user);
 	}
 
 	public void delete(Long id) {

@@ -1,29 +1,25 @@
-package com.chatApplication.Controller;
+package com.chatapplication.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.chatApplication.Model.Chat;
-import com.chatApplication.Model.User;
-import com.chatApplication.Services.UserService;
+import com.chatapplication.Model.Chat;
+import com.chatapplication.Model.User;
+import com.chatapplication.Services.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-	private static final Logger LOGGER = LogManager.getLogger(UserController.class);
 
 	UserService userService;
 	private static final String defaultAuthValue = "user12345";
-	private boolean isLogin = false;
+	private Boolean isLogin=false;
 
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -71,7 +67,11 @@ public class UserController {
 
 		if (authValue != null) {
 			if (authorize(authValue)) {
-				return userService.listAllUser();
+				try {
+					return userService.listAllUser();
+				} catch (Exception e){
+					return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+				}
 			} else
 				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
 		} else {
@@ -81,7 +81,7 @@ public class UserController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> addUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
+	public ResponseEntity<Object> addUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
 		// check authorization
 		if (authValue != null) {
 			if (authorize(authValue)) {
@@ -96,13 +96,13 @@ public class UserController {
 							chat.setCreatedDate(date);
 						}
 					}
-					userService.save(user);
-					return new ResponseEntity<>("Message: User added successfully", HttpStatus.CREATED);
+				User user1=	userService.save(user);
+					return new ResponseEntity<>( user1,HttpStatus.CREATED);
 				} catch (Exception e) {
-					return new ResponseEntity<>("Either username or email already exist .  ", HttpStatus.CONFLICT);
+					return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
 				}
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("Message: not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}

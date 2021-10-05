@@ -1,11 +1,10 @@
-package com.chatApplication.Services;
+package com.chatapplication.Services;
 
-import com.chatApplication.Model.Chat;
-import com.chatApplication.Repository.ChatRepository;
+import com.chatapplication.Model.Chat;
+import com.chatapplication.Repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
 import java.util.List;
 

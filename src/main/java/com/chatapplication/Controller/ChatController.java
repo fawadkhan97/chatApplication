@@ -1,7 +1,6 @@
-package com.chatApplication.Controller;
-
-import com.chatApplication.Model.Chat;
-import com.chatApplication.Services.ChatService;
+package com.chatapplication.Controller;
+import com.chatapplication.Model.Chat;
+import com.chatapplication.Services.ChatService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,7 @@ import java.util.NoSuchElementException;
 public class ChatController {
 	private static final Logger log = LogManager.getLogger(ChatController.class);
 
-	private static final String defaultAuthValue = "chat12345";
+	private static final String DEFAULT_AUTH_VALUE = "chat12345";
 	private final ChatService chatService;
 
 	public ChatController(ChatService chatService) {
@@ -27,7 +26,7 @@ public class ChatController {
 
 	// check whether user is authorized or not
 	public Boolean authorize(String authValue) {
-		return defaultAuthValue.equals(authValue);
+		return DEFAULT_AUTH_VALUE.equals(authValue);
 	}
 
 	@GetMapping(" ")
