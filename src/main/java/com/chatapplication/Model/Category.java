@@ -9,14 +9,17 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(nullable = false, unique = true)
+	private String name;
+	private String createdDate;
+	private String updatedDate;
 
-    @Column(nullable = false,unique = true)
-    private String name;
-
-
-
-
+	public Category(String name, String createdDate, String updatedDate) {
+		this.name = name;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+	}
 }

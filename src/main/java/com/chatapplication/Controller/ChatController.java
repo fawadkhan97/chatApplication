@@ -1,4 +1,5 @@
 package com.chatapplication.Controller;
+
 import com.chatapplication.Model.Chat;
 import com.chatapplication.Services.ChatService;
 import org.apache.logging.log4j.LogManager;
@@ -23,86 +24,71 @@ public class ChatController {
 		this.chatService = chatService;
 	}
 
-
 	// check whether user is authorized or not
 	public Boolean authorize(String authValue) {
 		return DEFAULT_AUTH_VALUE.equals(authValue);
 	}
 
-	@GetMapping(" ")
+	/**
+	 *
+	 * @param authValue
+	 * @return
+	 */
+	@GetMapping("/all")
 	public ResponseEntity<Object> chatList(@RequestHeader(required = false, value = "authorization") String authValue) {
 		// check whether user is authorized or not
 		if (authorize(authValue)) {
-			List<Chat> chatList = chatService.listAllChat();
-			// check if database is empty
-			if (chatList.isEmpty()) {
-				return new ResponseEntity<>("No data available", HttpStatus.NOT_FOUND);
-			} else {
-				return new ResponseEntity<>(chatList, HttpStatus.OK);
-			}
-
+			return chatService.listAllChat();
 		} else
 			return new ResponseEntity<>("Not authorize", HttpStatus.UNAUTHORIZED);
 	}
 
-	@GetMapping("/get/{id}")
-	public ResponseEntity<Object> get(@RequestHeader(required = false, value = "Authorization") String authValue, @RequestParam("question") @PathVariable Long id) {
+	/**
+	 *
+	 * @param authValue
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/get/id/{id}")
+	public ResponseEntity<Object> getChatById(@RequestHeader(value = "Authorization") String authValue,
+			@PathVariable Long id) {
 		if (authorize(authValue)) {
-		try {
-			Chat chat = chatService.get(id);
-			log.info(chat);
-			return new ResponseEntity<>(chat, HttpStatus.FOUND);
-		} catch (NoSuchElementException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return chatService.getChatById(id);
+		} else {
+			return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
 		}
-	} else {
-		return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
-
-	}}
-
-	@PostMapping("/add")
-	public ResponseEntity<String> addUser(@RequestHeader(required = false, value = "Authorization") String authValue,
-			@RequestBody Chat chat) {
-		// check authorization
-		if (authorize(authValue)) {
-			String pattern = "dd-M-yyyy hh:mm:ss";
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-			String date = simpleDateFormat.format(new Date());
-			chat.setCreatedDate(date);
-			chatService.save(chat);
-			return new ResponseEntity<>("chat added successfully", HttpStatus.CREATED);
-		} else
-			return new ResponseEntity<>(" not authorized ", HttpStatus.UNAUTHORIZED);
 	}
 
+	/**
+	 *
+	 * @param authValue
+	 * @param chats
+	 * @return
+	 */
 	@PutMapping("/update")
 	public ResponseEntity<Object> update(@RequestHeader(value = "Authorization", required = false) String authValue,
-			@RequestBody Chat chat) {
+			@RequestBody List<Chat> chats) {
 		if (authorize(authValue)) {
-			try {
-				String pattern = "dd-M-yyyy hh:mm:ss";
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-				String date = simpleDateFormat.format(new Date());
-				chat.setUpdatedDate(date);
-				chatService.save(chat);
-				return new ResponseEntity<>("updated successfully", HttpStatus.OK);
-			} catch (NoSuchElementException e) {
-				return new ResponseEntity<>("User not found ", HttpStatus.NOT_FOUND);
-			}
+			return chatService.updateChat(chats);
 		} else
 			return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
 	}
 
+	/**
+	 *
+	 * @param authValue
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> delete(@RequestHeader(value = "Authorization", required = false) String authValue,
+	public ResponseEntity<Object> delete(@RequestHeader(value = "Authorization", required = false) String authValue,
 			@PathVariable Long id) {
 		if (authorize(authValue)) {
-			try {
-				chatService.delete(id);
-				return new ResponseEntity<>("User deleted successfully ", HttpStatus.OK);
-			} catch (NoSuchElementException e) {
-				return new ResponseEntity<>("User not found ", HttpStatus.NOT_FOUND);
-			}
+			if (!(null == id)) {
+				return chatService.deleteChat(id);
+			} else
+				return new ResponseEntity<>("please enter Chat id. ", HttpStatus.METHOD_NOT_ALLOWED);
+
 		} else
 			return new ResponseEntity<>(" not authorize ", HttpStatus.UNAUTHORIZED);
 	}

@@ -1,37 +1,116 @@
 package com.chatapplication.Services;
 
+import com.chatapplication.Controller.ChatController;
 import com.chatapplication.Model.Chat;
 import com.chatapplication.Repository.ChatRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class ChatService {
 
-    @Autowired
-    ChatRepository chatRepository;
-    Date date;
+	private final ChatRepository chatRepository;
+	private static final Logger log = LogManager.getLogger(ChatService.class);
 
-    public List<Chat> listAllChat() {
-        return chatRepository.findAll();
-    }
+	public ChatService(ChatRepository chatRepository) {
+		this.chatRepository = chatRepository;
+	}
 
-    public Chat get(Long id) {
+	/**
+	 *
+	 * @return
+	 */
+	public ResponseEntity<Object> listAllChat() {
+		try {
+			List<Chat> chats = chatRepository.findAll();
+			// check if db has return chats
+			if (!chats.isEmpty()) {
+				return new ResponseEntity<>(chats, HttpStatus.OK);
+			} else
+				return new ResponseEntity<>(" Chats are empty ", HttpStatus.NOT_FOUND);
 
-        return chatRepository.findById(id).get();
-    }
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching all chats list in class ChatService and its function ListAllChat ",
+					e.getMessage());
+			return new ResponseEntity<>("Unable to find list an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-    public void save(Chat chat) {
-        chatRepository.save(chat);
-    }
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	public ResponseEntity<Object> getChatById(Long id) {
+		try {
+			Optional<Chat> chat = chatRepository.findById(id);
+			if (chat.isPresent()) {
+				return new ResponseEntity<>(chat, HttpStatus.FOUND);
+			} else
+				return new ResponseEntity<>("Chat not found. Incorrect id!!", HttpStatus.NOT_FOUND);
 
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching Chat by id  in class ChatService and its function getChatById ",
+					e.getMessage());
+			return new ResponseEntity<>("Unable to get chat an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
 
-    public void delete(Long id) {
-        chatRepository.deleteById(id);
-    }
+		}
 
+	}
+
+	/**
+	 *
+	 * @param chats
+	 * @return
+	 */
+	public ResponseEntity<Object> updateChat(List<Chat> chats) {
+		try {
+			for (Chat chat : chats) {
+				String pattern = "dd-M-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				chat.setUpdatedDate(date);
+				chatRepository.save(chat);
+			}
+			return new ResponseEntity<>(chats, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error("some error has occurred during Chat Update in class ChatService and its function updateChat ",
+					e.getMessage());
+			return new ResponseEntity<>("Chats could no be Updated , Data maybe incorrect",
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+	}
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	public ResponseEntity<Object> deleteChat(Long id) {
+		try {
+			chatRepository.deleteById(id);
+			return new ResponseEntity<>("chat has been Deleted successfully", HttpStatus.OK);
+		} catch (DataAccessException e) {
+			return new ResponseEntity<>("Message: Chat does not exists ", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			log.error("some error has occurred during Chat Deletion in class ChatService and its function DeleteChat ",
+					e.getMessage());
+			return new ResponseEntity<>("Chats could not be deleted due to some error",
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
 }

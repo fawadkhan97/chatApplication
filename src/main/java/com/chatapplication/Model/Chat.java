@@ -16,14 +16,14 @@ public class Chat {
     private String question;
     @Column(nullable = false)
     private String answer;
-    private String CreatedDate;
-    private String UpdatedDate;
+    private String createdDate;
+    private String updatedDate;
 
     public Chat(String question, String answer, String createdDate, String updatedDate) {
         this.question = question;
         this.answer = answer;
-        CreatedDate = createdDate;
-        UpdatedDate = updatedDate;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
     public Chat(){}
