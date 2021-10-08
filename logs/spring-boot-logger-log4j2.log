@@ -1,227 +1,31 @@
-2021-10-08 09:43:36,784 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 9424 (F:\Developer\chatApplication\target\classes started by fawad khan in F:\Developer\chatApplication)
-2021-10-08 09:43:36,802 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-10-08 09:43:38,839 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-10-08 09:43:39,012 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 158 ms. Found 3 JPA repository interfaces.
-2021-10-08 09:43:39,979 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2021-10-08 09:43:39,995 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2021-10-08 09:43:39,995 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-10-08 09:43:39,995 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-08 09:43:40,186 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-10-08 09:43:40,186 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3233 ms
-2021-10-08 09:43:40,411 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-10-08 09:43:40,464 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-10-08 09:43:40,749 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-10-08 09:43:40,880 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-10-08 09:43:41,551 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-10-08 09:43:41,582 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
-2021-10-08 09:43:42,600 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
-    alter table chats 
-       drop 
-       foreign key FKmolqi1xj49bg3jjr33674limy" via JDBC Statement
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
-    alter table chats 
-       drop 
-       foreign key FKmolqi1xj49bg3jjr33674limy" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
-	at com.chatapplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
-Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.chats' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	... 35 more
-2021-10-08 09:43:42,616 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
-    alter table user_category 
-       drop 
-       foreign key FKr6terf5lxmq72caceu7ltwavs" via JDBC Statement
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
-    alter table user_category 
-       drop 
-       foreign key FKr6terf5lxmq72caceu7ltwavs" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
-	at com.chatapplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
-Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.user_category' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	... 35 more
-2021-10-08 09:43:42,616 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "
-    alter table user_category 
-       drop 
-       foreign key FKh1fip9lpe4alrpurxqfmpftvl" via JDBC Statement
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
-    alter table user_category 
-       drop 
-       foreign key FKh1fip9lpe4alrpurxqfmpftvl" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:318) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) [spring-beans-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) [spring-context-5.3.10.jar:5.3.10]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:338) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-2.5.5.jar:2.5.5]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332) [spring-boot-2.5.5.jar:2.5.5]
-	at com.chatapplication.ChatApplication.main(ChatApplication.java:12) [classes/:?]
-Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.user_category' doesn't exist
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.26.jar:8.0.26]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:?]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:?]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.32.Final.jar:5.4.32.Final]
-	... 35 more
-2021-10-08 09:43:55,456 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-10-08 09:43:55,471 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-10-08 09:43:56,403 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-10-08 09:43:56,860 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2021-10-08 09:43:56,876 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2021-10-08 09:43:56,876 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
-2021-10-08 09:43:56,891 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2021-10-08 09:43:57,188 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
-2021-10-08 09:43:57,620 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 21.517 seconds (JVM running for 25.225)
-2021-10-08 09:44:43,250 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-08 09:44:43,251 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2021-10-08 09:44:43,254 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 3 ms
-2021-10-08 09:44:43,527 INFO c.c.S.UserService [http-nio-8080-exec-2] list of users fetch from db are 
-2021-10-08 09:46:17,969 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.web.bind.MissingRequestHeaderException: Required request header 'Authorization' for method parameter type String is not present]
-2021-10-08 09:48:53,454 INFO c.c.S.UserService [http-nio-8080-exec-6] list of users fetch from db are 
-2021-10-08 09:50:03,638 INFO c.c.S.UserService [http-nio-8080-exec-9] list of users fetch from db are 
-2021-10-08 09:50:40,860 INFO c.c.S.UserService [http-nio-8080-exec-10] list of users fetch from db are 
-2021-10-08 09:51:58,094 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
-2021-10-08 09:53:17,065 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
-2021-10-08 09:53:24,927 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported]
-2021-10-08 09:54:58,886 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:55:07,561 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-10] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:55:26,902 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:55:45,324 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:56:00,931 INFO c.c.S.UserService [http-nio-8080-exec-3] list of users fetch from db are 
-2021-10-08 09:56:56,550 INFO c.c.S.UserService [http-nio-8080-exec-4] list of users fetch from db are 
-2021-10-08 09:57:09,725 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-5] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:57:39,877 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
-2021-10-08 09:57:55,073 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:58:10,824 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `com.chatapplication.Model.User` from Array value (token `JsonToken.START_ARRAY`)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2021-10-08 09:59:10,096 INFO c.c.S.UserService [http-nio-8080-exec-9] list of users fetch from db are 
-2021-10-08 10:01:29,056 INFO c.c.S.UserService [http-nio-8080-exec-3] list of users fetch from db are 
-2021-10-08 10:23:08,276 INFO c.c.S.UserService [http-nio-8080-exec-5] list of users fetch from db are 
-2021-10-08 10:23:30,907 INFO c.c.S.UserService [http-nio-8080-exec-4] list of users fetch from db are 
-2021-10-08 10:23:31,203 INFO c.c.S.UserService [http-nio-8080-exec-2] list of users fetch from db are 
-2021-10-08 10:23:31,735 INFO c.c.S.UserService [http-nio-8080-exec-5] list of users fetch from db are 
-2021-10-08 10:23:32,750 INFO c.c.S.UserService [http-nio-8080-exec-7] list of users fetch from db are 
-2021-10-08 10:23:33,063 INFO c.c.S.UserService [http-nio-8080-exec-10] list of users fetch from db are 
-2021-10-08 10:23:33,532 INFO c.c.S.UserService [http-nio-8080-exec-1] list of users fetch from db are 
-2021-10-08 10:24:03,535 INFO c.c.S.UserService [http-nio-8080-exec-5] list of users fetch from db are 
-2021-10-08 10:38:27,927 INFO c.c.S.UserService [http-nio-8080-exec-5] list of users fetch from db are 
-2021-10-08 10:50:55,290 INFO c.c.S.UserService [http-nio-8080-exec-7] list of users fetch from db are 
-2021-10-08 10:52:09,730 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] SQL Error: 1062, SQLState: 23000
-2021-10-08 10:52:09,732 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] Duplicate entry 'zxc13213' for key 'UK_k8d0f2n7n88w1a16yhua64onx'
-2021-10-08 10:52:15,795 INFO c.c.S.UserService [http-nio-8080-exec-2] list of users fetch from db are 
+2021-10-08 17:44:00,005 INFO o.s.b.StartupInfoLogger [main] Starting ChatApplication using Java 1.8.0_73 on LTI-TRAINING-02 with PID 12440 (F:\Developer\chatApplication\target\classes started by fawad khan in F:\Developer\chatApplication)
+2021-10-08 17:44:00,024 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-10-08 17:44:01,416 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-10-08 17:44:01,526 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 96 ms. Found 3 JPA repository interfaces.
+2021-10-08 17:44:02,244 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-10-08 17:44:02,260 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-10-08 17:44:02,260 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-10-08 17:44:02,260 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-08 17:44:02,588 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-10-08 17:44:02,588 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2328 ms
+2021-10-08 17:44:02,791 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-10-08 17:44:02,854 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-10-08 17:44:03,182 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-10-08 17:44:03,307 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-10-08 17:44:03,822 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-10-08 17:44:03,854 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-10-08 17:44:04,744 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-10-08 17:44:04,760 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-10-08 17:44:05,541 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-10-08 17:44:06,025 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-10-08 17:44:06,041 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-10-08 17:44:06,041 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
+2021-10-08 17:44:06,072 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2021-10-08 17:44:06,088 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
+2021-10-08 17:44:06,728 INFO o.s.b.StartupInfoLogger [main] Started ChatApplication in 7.735 seconds (JVM running for 11.211)
+2021-10-08 17:44:10,041 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-08 17:44:10,041 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-10-08 17:44:10,043 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2021-10-08 17:44:10,576 ERROR c.c.S.UserService [http-nio-8080-exec-2] UserDTO(userId=7, firstName=stdfring, lastName=strisdfng, email=strisdfng, age=34, password=strsding, chat=[ChatDTO(answer=wef, answerDate=2021-10-08T13:34:52.540, chatID=null, question=stringdsf, questionDate=2021-10-08T13:34:52.540, updatedAnswerDate=null, updatedQuestionDate=null)], categories=[CategoryDTO(id=4, name=Funny)])
+2021-10-08 17:44:17,141 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-3] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:44:17,171 ERROR c.c.S.UserService [http-nio-8080-exec-3] some error has occurred while trying to save user,, in class ChatService and its function saveUser 

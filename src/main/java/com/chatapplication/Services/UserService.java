@@ -1,22 +1,25 @@
 package com.chatapplication.Services;
 
-import com.chatapplication.Model.entity.Chat;
-import com.chatapplication.Model.Interface.UserChatsAndCategories;
-import com.chatapplication.Model.entity.User;
-import com.chatapplication.Repository.ChatRepository;
-import com.chatapplication.Repository.UserRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import com.chatapplication.Model.Interface.UserChatsAndCategoriesDTO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.chatapplication.Model.Interface.UserChatsAndCategories;
+import com.chatapplication.Model.Interface.UserDTO;
+import com.chatapplication.Model.entity.Chat;
+import com.chatapplication.Model.entity.User;
+import com.chatapplication.Repository.ChatRepository;
+import com.chatapplication.Repository.UserRepository;
 
 /**
  * @author Fawad khan Created Date : 08-October-2021 A service class of user
@@ -26,15 +29,14 @@ import java.util.Optional;
 public class UserService {
 	final private UserRepository userRepository;
 	final private ChatRepository chatRepository;
-	final private UserChatsAndCategories userChatsAndCategories;
+	private RestTemplate restTemplate = new RestTemplate();
 
 	private static final Logger log = LogManager.getLogger(UserService.class);
 
 	// Autowiring through constructor
-	public UserService(UserRepository userRepository, ChatRepository chatRepository, UserChatsAndCategories userChatsAndCategories) {
+	public UserService(UserRepository userRepository, ChatRepository chatRepository) {
 		this.chatRepository = chatRepository;
 		this.userRepository = userRepository;
-		this.userChatsAndCategories = userChatsAndCategories;
 	}
 
 	/**
@@ -86,19 +88,48 @@ public class UserService {
 
 	}
 
-	public ResponseEntity<Object> getUserChats(Long id) {
+	/**
+	 * get all chats and categories of specific
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public ResponseEntity<Object> getUserChatsAndCategories(Long id) {
 		try {
 			Optional<User> user = userRepository.findById(id);
-			if (user.isPresent())
+			if (user.isPresent()) {
+				// save chats and categories from user object
+				UserChatsAndCategories userChatsAndCategories = new UserChatsAndCategories();
+				userChatsAndCategories.setCategories(user.get().getCategories());
+				userChatsAndCategories.setChats(user.get().getChats());
+				return new ResponseEntity<>(userChatsAndCategories, HttpStatus.FOUND);
+			} else {
+				String url = "http://192.168.10.17:8080/user/" + id;
+				HttpHeaders requestHeaders = new HttpHeaders();
+				// add Auhtorization to headers
+				requestHeaders.set("Authorization", "40dc498b-e837-4fa9-8e53-c1d51e01af15");
 
-				return new ResponseEntity<>(user, HttpStatus.FOUND);
-			else
-				return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
+				HttpEntity<UserDTO> requestEntity = new HttpEntity(requestHeaders);
+				// store request response in response entity object
+				ResponseEntity<UserDTO> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+						UserDTO.class);
+				log.error(responseEntity.getBody());
+
+				UserChatsAndCategoriesDTO userChatsAndCategoriesDTO = new UserChatsAndCategoriesDTO();
+				System.out.println("response is " + responseEntity.getBody());
+				UserDTO userDTO = new UserDTO();
+				userChatsAndCategoriesDTO.setCategories(responseEntity.getBody().getCategories());
+				userChatsAndCategoriesDTO.setChats(responseEntity.getBody().getChat());
+				return new ResponseEntity<>(userChatsAndCategoriesDTO, responseEntity.getStatusCode());
+
+			}
+			// return new ResponseEntity<>("could not get user with given details....",
+			// HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred during fetching User by id , in class UserService and its function getUserById ",
 					e.getMessage());
-
+			System.out.println(e.getMessage() + " " + e.getCause());
 			return new ResponseEntity<>("Unable to find User, an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
@@ -214,8 +245,9 @@ public class UserService {
 			user.toString();
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (Exception e) {
+			System.out.println(e.getMessage() + "  " + e.getCause());
 			log.error(
-					"some error has occurred while trying to update user,, in class ChatService and its function updateUser ",
+					"some error has occurred while trying to update user,, in class UserService and its function updateUser ",
 					e.getMessage());
 			return new ResponseEntity<>("Chats could not be added , Data maybe incorrect",
 					HttpStatus.INTERNAL_SERVER_ERROR);

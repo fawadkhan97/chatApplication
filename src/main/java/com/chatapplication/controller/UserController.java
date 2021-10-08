@@ -52,7 +52,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/all")
-	public ResponseEntity<Object> users(@RequestHeader(value = "Authorization") String authValue) {
+	public ResponseEntity<Object> users(@RequestHeader(value = "Authorization",required = false) String authValue) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return userService.listAllUser();
@@ -71,7 +71,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping("/add")
-	public ResponseEntity<Object> addUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
+	public ResponseEntity<Object> addUser(@RequestHeader(value = "Authorization",required = false) String authValue, @RequestBody User user) {
 		// check authorization
 		if (authValue != null) {
 			if (authorize(authValue)) {
@@ -92,7 +92,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping("/add/{userid}/chat")
-	public ResponseEntity<Object> addUserChats(@RequestHeader("Authorization") String authValue,
+	public ResponseEntity<Object> addUserChats(@RequestHeader(value = "Authorization",required = false) String authValue,
 			@PathVariable Long userid, @RequestBody List<Chat> chatList) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
@@ -105,11 +105,11 @@ public class UserController {
 	}
 
 	@GetMapping("/get/{userid}/chats")
-	public ResponseEntity<Object>getUserschats(@RequestHeader("Authorization") String authValue,
+	public ResponseEntity<Object>getUserschats(@RequestHeader(value = "Authorization",required = false) String authValue,
 											   @PathVariable Long userid){
 		if (authValue != null) {
 			if (authorize(authValue)) {
-				return userService.getUserById(userid);
+				return userService.getUserChatsAndCategories(userid);
 			} else {
 				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
@@ -125,7 +125,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Object> getUser(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
+	public ResponseEntity<Object> getUser(@RequestHeader(value = "Authorization", required = false) String authValue, @PathVariable Long id) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return userService.getUserById(id);
@@ -144,7 +144,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping("/update")
-	public ResponseEntity<Object> updateUser(@RequestHeader("Authorization") String authValue, @RequestBody User user) {
+	public ResponseEntity<Object> updateUser(@RequestHeader(value = "Authorization",required = false) String authValue, @RequestBody User user) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return userService.updateUser(user);
@@ -162,7 +162,7 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("delete/{id}")
-	public ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
+	public ResponseEntity<Object> deleteUser(@RequestHeader(value = "Authorization",required = false) String authValue, @PathVariable Long id) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return userService.deleteUser(id);
