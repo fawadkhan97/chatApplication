@@ -1,7 +1,8 @@
 package com.chatapplication.Services;
 
-import com.chatapplication.Model.Chat;
-import com.chatapplication.Model.User;
+import com.chatapplication.Model.entity.Chat;
+import com.chatapplication.Model.Interface.UserChatsAndCategories;
+import com.chatapplication.Model.entity.User;
 import com.chatapplication.Repository.ChatRepository;
 import com.chatapplication.Repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
@@ -12,35 +13,39 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Fawad khan Created Date : 08-October-2021 A service class of user
+ *         connected with repository which contains user CRUD operations
+ */
 @Service
 public class UserService {
 	final private UserRepository userRepository;
 	final private ChatRepository chatRepository;
+	final private UserChatsAndCategories userChatsAndCategories;
 
 	private static final Logger log = LogManager.getLogger(UserService.class);
 
 	// Autowiring through constructor
-	public UserService(UserRepository userRepository, ChatRepository chatRepository) {
+	public UserService(UserRepository userRepository, ChatRepository chatRepository, UserChatsAndCategories userChatsAndCategories) {
 		this.chatRepository = chatRepository;
 		this.userRepository = userRepository;
+		this.userChatsAndCategories = userChatsAndCategories;
 	}
 
-
 	/**
-	 *
-	 * @return
+	 * @author Fawad khan
+	 * @return List of users
 	 */
 	// Get list of all users
 	public ResponseEntity<Object> listAllUser() {
 		try {
 			List<User> users = userRepository.findAll();
-			log.info("users in db are ", users);
+			log.info("list of users fetch from db are ", users);
 			// check if database is empty
 			if (users.isEmpty()) {
 				return new ResponseEntity<>("Message:  Users are empty", HttpStatus.NOT_FOUND);
@@ -69,9 +74,8 @@ public class UserService {
 			if (user.isPresent())
 				return new ResponseEntity<>(user, HttpStatus.FOUND);
 			else
-				return new ResponseEntity<>("could not found user , Check id", HttpStatus.NOT_FOUND);
-		}
-		catch (Exception e) {
+				return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
 			log.error(
 					"some error has occurred during fetching User by id , in class UserService and its function getUserById ",
 					e.getMessage());
@@ -80,6 +84,24 @@ public class UserService {
 
 		}
 
+	}
+
+	public ResponseEntity<Object> getUserChats(Long id) {
+		try {
+			Optional<User> user = userRepository.findById(id);
+			if (user.isPresent())
+
+				return new ResponseEntity<>(user, HttpStatus.FOUND);
+			else
+				return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching User by id , in class UserService and its function getUserById ",
+					e.getMessage());
+
+			return new ResponseEntity<>("Unable to find User, an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
 	}
 
 	/**
@@ -175,7 +197,6 @@ public class UserService {
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-
 	}
 
 	/**
@@ -210,17 +231,15 @@ public class UserService {
 		try {
 			userRepository.deleteById(id);
 			return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
-		}catch (DataAccessException  e){
+		} catch (DataAccessException e) {
 			return new ResponseEntity<>("Message: User does not exists ", HttpStatus.NOT_FOUND);
-		} catch (Exception e){
+		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete user,, in class UserService and its function deleteUser ",
-					e.getMessage(),e.getCause() , e);
-			return new ResponseEntity<>("User could not be Deleted.......",
-					HttpStatus.INTERNAL_SERVER_ERROR);
+					e.getMessage(), e.getCause(), e);
+			return new ResponseEntity<>("User could not be Deleted.......", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
-
 
 	}
 

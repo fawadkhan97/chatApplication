@@ -1,5 +1,7 @@
-package com.chatapplication.Model;
+package com.chatapplication.Model.entity;
 
+import com.chatapplication.Model.entity.Category;
+import com.chatapplication.Model.entity.Chat;
 import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package com.chatapplication.Services;
 
-import com.chatapplication.Controller.ChatController;
-import com.chatapplication.Model.Chat;
+import com.chatapplication.Model.entity.Chat;
 import com.chatapplication.Repository.ChatRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service

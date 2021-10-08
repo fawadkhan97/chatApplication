@@ -1,6 +1,6 @@
 package com.chatapplication.Services;
 
-import com.chatapplication.Model.Category;
+import com.chatapplication.Model.entity.Category;
 import com.chatapplication.Repository.CategoryRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

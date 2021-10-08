@@ -1,4 +1,4 @@
-package com.chatapplication.Controller;
+package com.chatapplication.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.chatapplication.Model.Chat;
-import com.chatapplication.Model.User;
+import com.chatapplication.Model.entity.Chat;
+import com.chatapplication.Model.entity.User;
 import com.chatapplication.Services.UserService;
 
 @RestController
@@ -104,6 +104,20 @@ public class UserController {
 		}
 	}
 
+	@GetMapping("/get/{userid}/chats")
+	public ResponseEntity<Object>getUserschats(@RequestHeader("Authorization") String authValue,
+											   @PathVariable Long userid){
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				return userService.getUserById(userid);
+			} else {
+				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+			}
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
+	}
+
 	/**
 	 * 
 	 * @param authValue
@@ -158,4 +172,5 @@ public class UserController {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
 	}
+
 }

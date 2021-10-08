@@ -1,7 +1,6 @@
-package com.chatapplication.Controller;
+package com.chatapplication.controller;
 
-import com.chatapplication.Model.Category;
-import com.chatapplication.Model.Category;
+import com.chatapplication.Model.entity.Category;
 import com.chatapplication.Services.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

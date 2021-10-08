@@ -1,4 +1,4 @@
-package com.chatapplication.Model;
+package com.chatapplication.Model.entity;
 
 import lombok.*;
 
