@@ -29,3 +29,14 @@
 2021-10-08 17:44:10,576 ERROR c.c.S.UserService [http-nio-8080-exec-2] UserDTO(userId=7, firstName=stdfring, lastName=strisdfng, email=strisdfng, age=34, password=strsding, chat=[ChatDTO(answer=wef, answerDate=2021-10-08T13:34:52.540, chatID=null, question=stringdsf, questionDate=2021-10-08T13:34:52.540, updatedAnswerDate=null, updatedQuestionDate=null)], categories=[CategoryDTO(id=4, name=Funny)])
 2021-10-08 17:44:17,141 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-3] HHH000010: On release of batch it still contained JDBC statements
 2021-10-08 17:44:17,171 ERROR c.c.S.UserService [http-nio-8080-exec-3] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:44:42,644 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-4] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:44:42,644 ERROR c.c.S.UserService [http-nio-8080-exec-4] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:45:08,103 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-5] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:45:08,103 ERROR c.c.S.UserService [http-nio-8080-exec-5] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:45:14,009 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-7] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:45:14,009 ERROR c.c.S.UserService [http-nio-8080-exec-7] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:45:28,243 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-8] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:45:28,243 ERROR c.c.S.UserService [http-nio-8080-exec-8] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:45:49,040 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-9] HHH000010: On release of batch it still contained JDBC statements
+2021-10-08 17:45:49,040 ERROR c.c.S.UserService [http-nio-8080-exec-9] some error has occurred while trying to save user,, in class ChatService and its function saveUser 
+2021-10-08 17:46:54,860 INFO c.c.S.UserService [http-nio-8080-exec-1] list of users fetch from db are 
