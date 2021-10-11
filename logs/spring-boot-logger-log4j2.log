@@ -397,3 +397,4 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'chatapplication.user_roles' 
 2021-10-11 17:38:41,767 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-10-11 17:38:41,767 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
 2021-10-11 17:38:41,770 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
+
