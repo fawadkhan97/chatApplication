@@ -104,7 +104,7 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("/get/{userid}/chats")
+	@GetMapping("/get/{userid}/chatsAndCategories")
 	public ResponseEntity<Object>getUserschats(@RequestHeader(value = "Authorization",required = false) String authValue,
 											   @PathVariable Long userid){
 		if (authValue != null) {
