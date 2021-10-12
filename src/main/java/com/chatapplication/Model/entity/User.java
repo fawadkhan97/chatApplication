@@ -37,19 +37,9 @@ public class User {
 			@JoinColumn(name = "category_id") })
 	private List<Category> categories = new ArrayList<>();
 
-	public User(String userName, String email, String password, String cnic, int age, String createdDate,
-			String updatedDate, List<Chat> chats, List<Category> categories) {
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-		this.cnic = cnic;
-		this.age = age;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.chats = chats;
-		this.categories = categories;
-	}
+	@ManyToMany(targetEntity = Role.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "roles_id") })
+	private List<Role> roles = new ArrayList<>();
 
-	public User() {
-	}
 }

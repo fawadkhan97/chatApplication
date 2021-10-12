@@ -20,9 +20,4 @@ public class Category {
 	@DateTimeFormat
 	private String updatedDate;
 
-	public Category(String name, String createdDate, String updatedDate) {
-		this.name = name;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-	}
 }

@@ -46,9 +46,10 @@ public class UserService {
 	// Get list of all users
 	public ResponseEntity<Object> listAllUser() {
 		try {
+
 			List<User> users = userRepository.findAll();
-			log.info("list of users fetch from db are ", users);
-			// check if database is empty
+			log.info("list of  users fetch from db are ",users);
+			// check if list is empty
 			if (users.isEmpty()) {
 				return new ResponseEntity<>("Message:  Users are empty", HttpStatus.NOT_FOUND);
 			} else {
@@ -73,9 +74,12 @@ public class UserService {
 	public ResponseEntity<Object> getUserById(Long id) {
 		try {
 			Optional<User> user = userRepository.findById(id);
-			if (user.isPresent())
+			if (user.isPresent()) {
+				log.info("user fetch and found from db by id  : ", user.toString()
+				);
 				return new ResponseEntity<>(user, HttpStatus.FOUND);
-			else
+			}else
+				log.info("no user found with id:",user.get().getId());
 				return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
@@ -102,14 +106,16 @@ public class UserService {
 				UserChatsAndCategories userChatsAndCategories = new UserChatsAndCategories();
 				userChatsAndCategories.setCategories(user.get().getCategories());
 				userChatsAndCategories.setChats(user.get().getChats());
+				log.info("user chats and categories from db by id  : ", user.get().getId());
+
 				return new ResponseEntity<>(userChatsAndCategories, HttpStatus.FOUND);
 			} else {
-				String url = "http://192.168.10.17:8080/user/" + id;
+				String url = "http://192.168.10.11:8080/user/" + id;
 				HttpHeaders requestHeaders = new HttpHeaders();
-				// add Auhtorization to headers
+				// add Authorization to headers
 				requestHeaders.set("Authorization", "40dc498b-e837-4fa9-8e53-c1d51e01af15");
-
 				HttpEntity<UserDTO> requestEntity = new HttpEntity(requestHeaders);
+
 				// store request response in response entity object
 				ResponseEntity<UserDTO> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
 						UserDTO.class);
@@ -120,6 +126,9 @@ public class UserService {
 				UserDTO userDTO = new UserDTO();
 				userChatsAndCategoriesDTO.setCategories(responseEntity.getBody().getCategories());
 				userChatsAndCategoriesDTO.setChats(responseEntity.getBody().getChat());
+
+				log.info("user fetch and found from 3rd party db by id  : ", user.get().getId());
+
 				return new ResponseEntity<>(userChatsAndCategoriesDTO, responseEntity.getStatusCode());
 
 			}
