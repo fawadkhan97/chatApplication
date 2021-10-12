@@ -15,13 +15,9 @@ public class RoleController {
 	private static final String defaultAuthValue = "role12345";
 	final private RoleService roleService;
 
-	
-	
 	public RoleController(RoleService roleService) {
 		this.roleService = roleService;
 	}
-
-
 
 	/**
 	 * check role is authorized or not
@@ -33,12 +29,18 @@ public class RoleController {
 		return defaultAuthValue.equals(authValue);
 	}
 
-
-
 	@GetMapping("/all")
-	public ResponseEntity<Object> getAllRoles(@RequestHeader(required = false, value = "Authorization") String token) {
-
-		return roleService.getAllRoles();
+	public ResponseEntity<Object> getAllRoles(
+			@RequestHeader(required = false, value = "Authorization") String authValue) {
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				return roleService.getAllRoles();
+			} else {
+				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+			}
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
 
 	}
 
@@ -55,21 +57,25 @@ public class RoleController {
 		}
 	}
 
-
-
 	@PostMapping("/add")
-	public ResponseEntity<Object> saveRole(@RequestHeader(required = false, value = "Auhtorization") String token,
-										   @RequestBody Role role) {
+	public ResponseEntity<Object> saveRole(@RequestHeader(required = false, value = "Authorization") String authValue,
+			@RequestBody Role role) {
 
-		return roleService.addRole(role);
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				return roleService.addRole(role);
+			} else {
+				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+			}
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
 
 	}
 
-	
-	
 	@PutMapping("/update")
 	public ResponseEntity<Object> updateRole(@RequestHeader("Authorization") String authValue,
-												 @RequestBody List<Role> categories) {
+			@RequestBody List<Role> categories) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return roleService.updateRole(categories);
@@ -81,8 +87,7 @@ public class RoleController {
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Object> deleteRole(@RequestHeader("Authorization") String authValue,
-												 @PathVariable Long id) {
+	public ResponseEntity<Object> deleteRole(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
 				return roleService.deleteRole(id);

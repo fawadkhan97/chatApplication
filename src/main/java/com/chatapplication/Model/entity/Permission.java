@@ -18,4 +18,5 @@ public class Permission {
 	private String CreatedDate;
 	private String UpdatedDate;
 
+	private boolean status;
 }
