@@ -28,7 +28,7 @@ public class User {
 	private String createdDate;
 	private String updatedDate;
 
-	@OneToMany(targetEntity = Chat.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(targetEntity = Chat.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = false)
 	private List<Chat> chats = new ArrayList<>();
 

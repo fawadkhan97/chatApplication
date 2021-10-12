@@ -48,7 +48,7 @@ public class UserService {
 		try {
 
 			List<User> users = userRepository.findAll();
-			log.info("list of  users fetch from db are ",users);
+			log.info("list of  users fetch from db are ", users);
 			// check if list is empty
 			if (users.isEmpty()) {
 				return new ResponseEntity<>("Message:  Users are empty", HttpStatus.NOT_FOUND);
@@ -75,12 +75,11 @@ public class UserService {
 		try {
 			Optional<User> user = userRepository.findById(id);
 			if (user.isPresent()) {
-				log.info("user fetch and found from db by id  : ", user.toString()
-				);
+				log.info("user fetch and found from db by id  : ", user.toString());
 				return new ResponseEntity<>(user, HttpStatus.FOUND);
-			}else
-				log.info("no user found with id:",user.get().getId());
-				return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
+			} else
+				log.info("no user found with id:", user.get().getId());
+			return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred during fetching User by id , in class UserService and its function getUserById ",
@@ -182,6 +181,7 @@ public class UserService {
 			log.error(
 					"some error has occurred trying to save user,  Class  UserService and its function addChatsInUser ",
 					e.getMessage());
+			System.out.println(" error is " + e.getCause() + " " + e.getMessage());
 			return new ResponseEntity<>("chats could not be added , Data maybe incorrect",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -227,12 +227,11 @@ public class UserService {
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (DataIntegrityViolationException e) {
 			return new ResponseEntity<>("Data already exists .. duplicates not allowed ", HttpStatus.CONFLICT);
-		}
-
-		catch (Exception e) {
+		} catch (Exception e) {
 			log.error(
-					"some error has occurred while trying to save user,, in class ChatService and its function saveUser ",
+					"some error has occurred while trying to save user,, in class UserService and its function saveUser ",
 					e.getMessage());
+			System.out.println("error is " + e.getMessage() + "  " + e.getCause());
 			return new ResponseEntity<>("Chats could not be added , Data maybe incorrect",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
