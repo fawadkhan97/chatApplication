@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,6 @@ public class PermissionService {
 	final private PermissionRepository permissionRepository;
 	private static final Logger log = LogManager.getLogger(PermissionService.class);
 
-
 	public PermissionService(PermissionRepository permissionRepository) {
 		this.permissionRepository = permissionRepository;
 	}
@@ -29,15 +29,15 @@ public class PermissionService {
 	public ResponseEntity<Object> getAllPermission() {
 
 		try {
-			List<Permission> permissions = permissionRepository.findAll();
-			if (permissions.isEmpty()) {
-				return new ResponseEntity<>(" no permission is available", HttpStatus.NOT_FOUND);
-			} else
+			List<Permission> permissions = permissionRepository.findAllByStatus(true);
+			if (!permissions.isEmpty()) {
 				return new ResponseEntity<>(permissions, HttpStatus.OK);
+			} else
+				return new ResponseEntity<>(" no permission is available ", HttpStatus.NOT_FOUND);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + " \n " + e.getCause());
-			return new ResponseEntity<>("Could not fetch permissions due to some  error",
+			return new ResponseEntity<>(" Could not fetch permissions due to some error",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -64,11 +64,16 @@ public class PermissionService {
 	public ResponseEntity<Object> savePermission(List<Permission> permissions) {
 		try {
 			for (Permission permission : permissions) {
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				permission.setCreatedDate(date);
 				permissionRepository.save(permission);
+				permission.toString();
 			}
 			return new ResponseEntity<>(permissions, HttpStatus.OK);
 		} catch (DataIntegrityViolationException e) {
-			return new ResponseEntity<>("Could not add new permission , Permission already exist", HttpStatus.OK);
+			return new ResponseEntity<>("Could not add new permission , Permission already exist or ", HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + " \n " + e.getCause());
 			return new ResponseEntity<>("Could not add permissions due to some  error",
@@ -82,7 +87,7 @@ public class PermissionService {
 				String pattern = "dd-MM-yyyy hh:mm:ss";
 				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 				String date = simpleDateFormat.format(new Date());
-				permission.setCreatedDate(date);
+				permission.setUpdatedDate(date);
 				permissionRepository.save(permission);
 				permission.toString();
 			}
@@ -98,15 +103,24 @@ public class PermissionService {
 
 	public ResponseEntity<String> deletePermission(Long id) {
 		try {
-			permissionRepository.deleteById(id);
-			return new ResponseEntity<>("Message: Permission deleted successfully", HttpStatus.OK);
-		} catch (DataAccessException e) {
-			return new ResponseEntity<>("Message: Permission does not exists ", HttpStatus.NOT_FOUND);
-		} catch (Exception e) {
+			Optional<Permission> permission = permissionRepository.findById(id);
+			if (permission.isPresent()) {
 
+				// set status false
+				permission.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				permission.get().setUpdatedDate(date);
+				permissionRepository.save(permission.get());
+				return new ResponseEntity<>("Message: Permission deleted successfully", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("Message: Permission does not exists ", HttpStatus.NOT_FOUND);
+
+		} catch (Exception e) {
 			return new ResponseEntity<>("Permission could not be Deleted..Due to some error.....",
 					HttpStatus.INTERNAL_SERVER_ERROR);
-
 		}
 
 	}

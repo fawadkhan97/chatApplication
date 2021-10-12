@@ -19,9 +19,11 @@ public class Role {
 	private String name;
 	private String CreatedDate;
 	private String UpdatedDate;
+	private boolean status;
 
 	@ManyToMany(targetEntity = Permission.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinTable(name = "roles_permission", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "permission_id") })
 	private List<Permission> permissions = new ArrayList<>();
+
 }

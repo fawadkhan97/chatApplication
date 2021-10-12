@@ -92,9 +92,17 @@ public class PermissionController {
 		}
 	}
 
-	@DeleteMapping("/delete")
-	public ResponseEntity<String> deletePermission(@PathVariable long id) {
-		return permissionService.deletePermission(id);
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deletePermission(@RequestHeader("Authorization") String authValue,
+			@PathVariable long id) {
+		if (authValue != null) {
+			if (authorize(authValue)) {
+				return permissionService.deletePermission(id);
+			} else
+				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+		} else {
+			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
+		}
 	}
 
 }

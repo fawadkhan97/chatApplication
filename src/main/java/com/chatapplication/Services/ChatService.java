@@ -28,10 +28,9 @@ public class ChatService {
 	 *
 	 * @return
 	 */
-	public ResponseEntity<Object> listAllChat()
-	{
+	public ResponseEntity<Object> listAllChat() {
 		try {
-			List<Chat> chats = chatRepository.findAll();
+			List<Chat> chats = chatRepository.findAllByStatus(true);
 			// check if db has return chats
 			if (!chats.isEmpty()) {
 				return new ResponseEntity<>(chats, HttpStatus.OK);
@@ -100,10 +99,20 @@ public class ChatService {
 	 */
 	public ResponseEntity<Object> deleteChat(Long id) {
 		try {
-			chatRepository.deleteById(id);
-			return new ResponseEntity<>("chat has been Deleted successfully", HttpStatus.OK);
-		} catch (DataAccessException e) {
-			return new ResponseEntity<>("Message: Chat does not exists ", HttpStatus.NOT_FOUND);
+			Optional<Chat> chat = chatRepository.findById(id);
+			if (chat.isPresent()) {
+
+				// set status false
+				chat.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				chat.get().setUpdatedDate(date);
+				chatRepository.save(chat.get());
+				return new ResponseEntity<>("chat has been Deleted successfully", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("Message: Chat does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error("some error has occurred during Chat Deletion in class ChatService and its function DeleteChat ",
 					e.getMessage());

@@ -17,14 +17,5 @@ public class Chat {
 	private String answer;
 	private String createdDate;
 	private String updatedDate;
-
-	public Chat(String question, String answer, String createdDate, String updatedDate) {
-		this.question = question;
-		this.answer = answer;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-	}
-
-	public Chat() {
-	}
+	private boolean status;
 }

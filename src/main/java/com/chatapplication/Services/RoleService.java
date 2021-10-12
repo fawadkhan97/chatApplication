@@ -1,7 +1,6 @@
 package com.chatapplication.Services;
 
-import com.chatapplication.Model.entity.Role;
-import com.chatapplication.Model.entity.Role;
+
 import com.chatapplication.Model.entity.Role;
 import com.chatapplication.Repository.RoleRepository;
 import com.chatapplication.Repository.UserRepository;
@@ -37,7 +36,7 @@ public class RoleService {
 	public ResponseEntity<Object> getAllRoles() {
 		try {
 
-			List<Role> roles = roleRepository.findAll();
+			List<Role> roles = roleRepository.findAllByStatus(true);
 
 			// check if list is empty or not
 			if (roles.isEmpty()) {
@@ -84,7 +83,6 @@ public class RoleService {
 
 	}
 
-
 	public ResponseEntity<Object> getRoleById(Long id) {
 		try {
 			Optional<Role> role = roleRepository.findById(id);
@@ -97,13 +95,11 @@ public class RoleService {
 					"some error has occurred during fetching Role by id , in class RoleService and its function getRoleById ",
 					e);
 
-			return new ResponseEntity<>("Unable to find Role, an error has occurred",
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Unable to find Role, an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
 
 	}
-
 
 	public ResponseEntity<Object> updateRole(List<Role> categories) {
 		try {
@@ -125,13 +121,22 @@ public class RoleService {
 		}
 	}
 
-
 	public ResponseEntity<Object> deleteRole(Long id) {
 		try {
-			roleRepository.deleteById(id);
-			return new ResponseEntity<>("Message: Role deleted successfully", HttpStatus.OK);
-		} catch (DataAccessException e) {
-			return new ResponseEntity<>("Message: Role does not exists ", HttpStatus.NOT_FOUND);
+			Optional<Role> role = roleRepository.findById(id);
+			if (role.isPresent()) {
+
+				// set status false
+				role.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				role.get().setUpdatedDate(date);
+				roleRepository.save(role.get());
+				return new ResponseEntity<>("Message: Role deleted successfully", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("Message: Role does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete role,, in class RoleService and its function deleteRole ",
@@ -141,5 +146,5 @@ public class RoleService {
 		}
 
 	}
-	
+
 }

@@ -4,7 +4,6 @@ import com.chatapplication.Model.entity.Category;
 import com.chatapplication.Repository.CategoryRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +30,7 @@ public class CategoryService {
 	 */
 	public ResponseEntity<Object> listAllCategory() {
 		try {
-			List<Category> categorys = categoryRepository.findAll();
+			List<Category> categorys = categoryRepository.findAllByStatus(true);
 			log.info("categorys in db are ", categorys);
 			// check if database is empty
 			if (categorys.isEmpty()) {
@@ -134,10 +133,20 @@ public class CategoryService {
 	 */
 	public ResponseEntity<Object> deleteCategory(Long id) {
 		try {
-			categoryRepository.deleteById(id);
-			return new ResponseEntity<>("Message: Category deleted successfully", HttpStatus.OK);
-		} catch (DataAccessException e) {
-			return new ResponseEntity<>("Message: Category does not exists ", HttpStatus.NOT_FOUND);
+			Optional<Category> category = categoryRepository.findById(id);
+			if (category.isPresent()) {
+
+				// set status false
+				category.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				category.get().setUpdatedDate(date);
+				categoryRepository.save(category.get());
+				return new ResponseEntity<>("Message: Category deleted successfully", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("Message: Category does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete category,, in class CategoryService and its function deleteCategory ",

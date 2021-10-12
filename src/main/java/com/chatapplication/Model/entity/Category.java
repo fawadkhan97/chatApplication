@@ -19,5 +19,6 @@ public class Category {
 	private String createdDate;
 	@DateTimeFormat
 	private String updatedDate;
+	private boolean status;
 
 }

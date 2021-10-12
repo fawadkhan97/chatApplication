@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.chatapplication.Model.Interface.UserChatsAndCategoriesDTO;
+import com.chatapplication.Model.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -47,7 +48,7 @@ public class UserService {
 	public ResponseEntity<Object> listAllUser() {
 		try {
 
-			List<User> users = userRepository.findAll();
+			List<User> users = userRepository.findAllByStatus(true);
 			log.info("list of  users fetch from db are ", users);
 			// check if list is empty
 			if (users.isEmpty()) {
@@ -269,10 +270,20 @@ public class UserService {
 	 */
 	public ResponseEntity<Object> deleteUser(Long id) {
 		try {
-			userRepository.deleteById(id);
-			return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
-		} catch (DataAccessException e) {
-			return new ResponseEntity<>("Message: User does not exists ", HttpStatus.NOT_FOUND);
+			Optional<User> user = userRepository.findById(id);
+			if (user.isPresent()) {
+
+				// set status false
+				user.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				user.get().setUpdatedDate(date);
+				userRepository.save(user.get());
+				return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("Message: User does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete user,, in class UserService and its function deleteUser ",
