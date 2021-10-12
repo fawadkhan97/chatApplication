@@ -29,11 +29,11 @@ public class PermissionService {
 	public ResponseEntity<Object> getAllPermission() {
 
 		try {
-			List<Permission> permissions = permissionRepository.findAll();
-			if (permissions.isEmpty()) {
-				return new ResponseEntity<>(" no permission is available ", HttpStatus.NOT_FOUND);
-			} else
+			List<Permission> permissions = permissionRepository.findAllByStatus(true);
+			if (!permissions.isEmpty()) {
 				return new ResponseEntity<>(permissions, HttpStatus.OK);
+			} else
+				return new ResponseEntity<>(" no permission is available ", HttpStatus.NOT_FOUND);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + " \n " + e.getCause());
@@ -103,12 +103,17 @@ public class PermissionService {
 
 	public ResponseEntity<String> deletePermission(Long id) {
 		try {
+			Optional<Permission> permission = permissionRepository.findById(id);
+			if (permission.isPresent()) {
 
-			List<Permission> permissions = permissionRepository.findAllById(Collections.singleton(id));
-			if (!permissions.isEmpty()) {
-
-				permissions.get(0).setStatus(false);
-				updatePermission(permissions);
+				// set status false
+				permission.get().setStatus(false);
+				// set updated date
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				permission.get().setUpdatedDate(date);
+				permissionRepository.save(permission.get());
 				return new ResponseEntity<>("Message: Permission deleted successfully", HttpStatus.OK);
 			} else
 				return new ResponseEntity<>("Message: Permission does not exists ", HttpStatus.NOT_FOUND);

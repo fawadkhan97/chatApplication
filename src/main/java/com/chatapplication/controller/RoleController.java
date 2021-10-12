@@ -86,7 +86,7 @@ public class RoleController {
 		}
 	}
 
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> deleteRole(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
 		if (authValue != null) {
 			if (authorize(authValue)) {
