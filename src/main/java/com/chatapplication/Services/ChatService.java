@@ -28,7 +28,8 @@ public class ChatService {
 	 *
 	 * @return
 	 */
-	public ResponseEntity<Object> listAllChat() {
+	public ResponseEntity<Object> listAllChat()
+	{
 		try {
 			List<Chat> chats = chatRepository.findAll();
 			// check if db has return chats

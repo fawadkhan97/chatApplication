@@ -1,6 +1,8 @@
 package com.chatapplication.Services;
 
 import com.chatapplication.Model.entity.Role;
+import com.chatapplication.Model.entity.Role;
+import com.chatapplication.Model.entity.Role;
 import com.chatapplication.Repository.RoleRepository;
 import com.chatapplication.Repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
@@ -16,10 +18,11 @@ import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleService {
-	private static final Logger log = LogManager.getLogger(UserService.class);
+	private static final Logger log = LogManager.getLogger(RoleService.class);
 
 	@Autowired
 	RoleRepository roleRepository;
@@ -52,7 +55,7 @@ public class RoleService {
 	}
 
 	/**
-	 * get list of all role available
+	 * add role to db
 	 * 
 	 * @author Fawad khan
 	 * @Created Date 11-0ct-2021
@@ -80,4 +83,63 @@ public class RoleService {
 		}
 
 	}
+
+
+	public ResponseEntity<Object> getRoleById(Long id) {
+		try {
+			Optional<Role> role = roleRepository.findById(id);
+			if (role.isPresent())
+				return new ResponseEntity<>(role, HttpStatus.FOUND);
+			else
+				return new ResponseEntity<>("could not found role , Check id", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching Role by id , in class RoleService and its function getRoleById ",
+					e);
+
+			return new ResponseEntity<>("Unable to find Role, an error has occurred",
+					HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+
+	}
+
+
+	public ResponseEntity<Object> updateRole(List<Role> categories) {
+		try {
+			for (Role role : categories) {
+				String pattern = "dd-MM-yyyy hh:mm:ss";
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				String date = simpleDateFormat.format(new Date());
+				role.setCreatedDate(date);
+				roleRepository.save(role);
+				role.toString();
+			}
+			return new ResponseEntity<>(categories, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred while trying to update role,, in class RoleService and its function updateRole ",
+					e.getMessage());
+			return new ResponseEntity<>("Categories could not be Updated , Data maybe incorrect",
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+
+	public ResponseEntity<Object> deleteRole(Long id) {
+		try {
+			roleRepository.deleteById(id);
+			return new ResponseEntity<>("Message: Role deleted successfully", HttpStatus.OK);
+		} catch (DataAccessException e) {
+			return new ResponseEntity<>("Message: Role does not exists ", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred while trying to Delete role,, in class RoleService and its function deleteRole ",
+					e.getMessage(), e.getCause(), e);
+			return new ResponseEntity<>("Role could not be Deleted.......", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+
+	}
+	
 }
