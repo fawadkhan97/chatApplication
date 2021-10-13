@@ -53,7 +53,7 @@ public class ChatController {
 		if (authorize(authValue)) {
 			return chatService.getChatById(id);
 		} else {
-			return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 		}
 	}
 

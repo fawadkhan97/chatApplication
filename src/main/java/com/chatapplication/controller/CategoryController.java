@@ -39,7 +39,7 @@ public class CategoryController {
 			if (authorize(authValue)) {
 				return categoryService.listAllCategory();
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -59,7 +59,7 @@ public class CategoryController {
 			if (authorize(authValue)) {
 				return categoryService.saveCategory(categories);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -78,7 +78,7 @@ public class CategoryController {
 			if (authorize(authValue)) {
 				return categoryService.getCategoryById(id);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -98,7 +98,7 @@ public class CategoryController {
 			if (authorize(authValue)) {
 				return categoryService.updateCategory(categories);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
@@ -117,7 +117,7 @@ public class CategoryController {
 			if (authorize(authValue)) {
 				return categoryService.deleteCategory(id);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}

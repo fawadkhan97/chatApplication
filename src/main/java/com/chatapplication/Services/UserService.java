@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.chatapplication.Model.Interface.UserChatsAndCategoriesDTO;
+import com.chatapplication.Model.entity.SMS;
 import com.chatapplication.Model.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import com.chatapplication.Model.Interface.UserChatsAndCategories;
 import com.chatapplication.Model.Interface.UserDTO;
 import com.chatapplication.Model.entity.Chat;
-import com.chatapplication.Model.entity.User;
 import com.chatapplication.Repository.ChatRepository;
 import com.chatapplication.Repository.UserRepository;
 
@@ -30,14 +29,16 @@ import com.chatapplication.Repository.UserRepository;
 public class UserService {
 	final private UserRepository userRepository;
 	final private ChatRepository chatRepository;
+	final private SMSService smsService;
 	private RestTemplate restTemplate = new RestTemplate();
 
 	private static final Logger log = LogManager.getLogger(UserService.class);
 
 	// Autowiring through constructor
-	public UserService(UserRepository userRepository, ChatRepository chatRepository) {
+	public UserService(UserRepository userRepository, ChatRepository chatRepository, SMSService smsService) {
 		this.chatRepository = chatRepository;
 		this.userRepository = userRepository;
+		this.smsService = smsService;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public class UserService {
 			log.info("list of  users fetch from db are ", users);
 			// check if list is empty
 			if (users.isEmpty()) {
-				return new ResponseEntity<>("Message:  Users are empty", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS:  Users are empty", HttpStatus.NOT_FOUND);
 			} else {
 				return new ResponseEntity<>(users, HttpStatus.OK);
 			}
@@ -78,6 +79,32 @@ public class UserService {
 			if (user.isPresent()) {
 				log.info("user fetch and found from db by id  : ", user.toString());
 				return new ResponseEntity<>(user, HttpStatus.FOUND);
+			} else
+				log.info("no user found with id:", user.get().getId());
+			return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching User by id , in class UserService and its function getUserById ",
+					e.getMessage());
+
+			return new ResponseEntity<>("Unable to find User, an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+
+	}
+
+	// send user sms
+	public ResponseEntity<Object> sendSms(Long id, String message) {
+		try {
+			Optional<User> user = userRepository.findById(id);
+			if (user.isPresent()) {
+				log.info("user fetch and found from db by id  : ", user.toString());
+
+				SMS sms = new SMS();
+				sms.setTo(user.get().getPhoneNumber());
+				sms.setMessage(message);
+
+				return smsService.send(sms);
 			} else
 				log.info("no user found with id:", user.get().getId());
 			return new ResponseEntity<>("could not found user with given details....", HttpStatus.NOT_FOUND);
@@ -281,9 +308,9 @@ public class UserService {
 				String date = simpleDateFormat.format(new Date());
 				user.get().setUpdatedDate(date);
 				userRepository.save(user.get());
-				return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
+				return new ResponseEntity<>("SMS: User deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: User does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: User does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete user,, in class UserService and its function deleteUser ",
