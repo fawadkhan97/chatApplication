@@ -4,12 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import com.chatapplication.Model.Interface.UserChatsAndCategoriesDTO;
 import com.chatapplication.Model.entity.User;
+import com.chatapplication.util.EmailUtil;
+import com.chatapplication.util.SMSUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import com.chatapplication.Model.Interface.UserChatsAndCategories;
 import com.chatapplication.Model.Interface.UserDTO;
 import com.chatapplication.Model.entity.Chat;
-import com.chatapplication.Model.entity.User;
 import com.chatapplication.Repository.ChatRepository;
 import com.chatapplication.Repository.UserRepository;
 
@@ -30,14 +31,17 @@ import com.chatapplication.Repository.UserRepository;
 public class UserService {
 	final private UserRepository userRepository;
 	final private ChatRepository chatRepository;
-	private RestTemplate restTemplate = new RestTemplate();
+	final private EmailUtil emailUtil;
+	final private RestTemplate restTemplate = new RestTemplate();
+	final private SMSUtil smsUtil = new SMSUtil();
 
 	private static final Logger log = LogManager.getLogger(UserService.class);
 
 	// Autowiring through constructor
-	public UserService(UserRepository userRepository, ChatRepository chatRepository) {
-		this.chatRepository = chatRepository;
+	public UserService(UserRepository userRepository, ChatRepository chatRepository, EmailUtil emailUtil) {
 		this.userRepository = userRepository;
+		this.chatRepository = chatRepository;
+		this.emailUtil = emailUtil;
 	}
 
 	/**
@@ -52,7 +56,7 @@ public class UserService {
 			log.info("list of  users fetch from db are ", users);
 			// check if list is empty
 			if (users.isEmpty()) {
-				return new ResponseEntity<>("Message:  Users are empty", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("  Users are empty", HttpStatus.NOT_FOUND);
 			} else {
 				return new ResponseEntity<>(users, HttpStatus.OK);
 			}
@@ -92,6 +96,44 @@ public class UserService {
 
 	}
 
+	// send user sms
+	public ResponseEntity<Object> sendSms(Long id, String message) {
+		UserDTO userDTO = new UserDTO();
+		try {
+			Optional<User> user = userRepository.findById(id);
+			if (user.isPresent()) {
+				log.info("user fetch and found from db by id  : ", user.toString());
+				return smsUtil.sendSMS(user.get().getPhoneNumber(), message);
+			} else {
+				String url = "http://192.168.10.13:8080/user/" + id;
+				HttpHeaders requestHeaders = new HttpHeaders();
+				// add Authorization to headers
+				requestHeaders.set("Authorization", "40dc498b-e837-4fa9-8e53-c1d51e01af15");
+				HttpEntity<UserDTO> requestEntity = new HttpEntity(requestHeaders);
+
+				System.out.println("url is " + url);
+				// store request response in response entity object
+				ResponseEntity<UserDTO> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+						UserDTO.class);
+				log.error(responseEntity.getBody());
+
+				// store body from response entity in userDTO object
+				userDTO = responseEntity.getBody();
+				String phoneNumber = userDTO.getPhoneNumber();
+				// String mymessage = jsonObj;
+				System.out
+						.println("response is " + responseEntity.getBody().getPhoneNumber() + " message is " + message);
+				return smsUtil.sendSMS(phoneNumber, message);
+			}
+		} catch (Exception e) {
+			log.error(
+					"some error has occurred during fetching User by id , in class UserService and its function sendSms ",
+					e.getMessage());
+			System.out.println(e.getMessage() + e.getCause());
+			return new ResponseEntity<>("Unable to find User, an error has occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	/**
 	 * get all chats and categories of specific
 	 * 
@@ -110,7 +152,7 @@ public class UserService {
 
 				return new ResponseEntity<>(userChatsAndCategories, HttpStatus.FOUND);
 			} else {
-				String url = "http://192.168.10.11:8080/user/" + id;
+				String url = "http://192.168.10.13:8080/user/" + id;
 				HttpHeaders requestHeaders = new HttpHeaders();
 				// add Authorization to headers
 				requestHeaders.set("Authorization", "40dc498b-e837-4fa9-8e53-c1d51e01af15");
@@ -127,7 +169,8 @@ public class UserService {
 				userChatsAndCategoriesDTO.setCategories(responseEntity.getBody().getCategories());
 				userChatsAndCategoriesDTO.setChats(responseEntity.getBody().getChat());
 
-				log.info("user fetch and found from 3rd party db by id  : ", user.get().getId());
+				// log.info("user fetch and found from 3rd party db by id : ",
+				// user.get().getId());
 
 				return new ResponseEntity<>(userChatsAndCategoriesDTO, responseEntity.getStatusCode());
 
@@ -202,10 +245,10 @@ public class UserService {
 			else
 				return new ResponseEntity<>("incorrect login details, Login failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			log.error(
 					"some error has occurred during fetching User by username , in class UserService and its function getUserByName ",
 					e.getMessage());
-
 			return new ResponseEntity<>("Unable to Login either password or username might be incorrect",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -223,6 +266,19 @@ public class UserService {
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 			String date = simpleDateFormat.format(new Date());
 			user.setCreatedDate(date);
+			user.setStatus(false);
+			Random rndkey = new Random(); // Generating a random number
+			int emailToken = rndkey.nextInt(999999); // Generating a random email token of 6 digits
+			int smsToken = rndkey.nextInt(999999); // Generating a random email token of 6 digits
+			// send email token to user email and save in db
+			emailUtil.sendMail(user.getEmail(), emailToken);
+			user.setEmailToken(emailToken);
+
+			// send sms token to user email and save in db
+			smsUtil.sendSMS(user.getPhoneNumber(), smsToken);
+			user.setSmsToken(smsToken);
+
+			// save user to db
 			userRepository.save(user);
 			user.toString();
 			return new ResponseEntity<>(user, HttpStatus.OK);
@@ -281,15 +337,35 @@ public class UserService {
 				String date = simpleDateFormat.format(new Date());
 				user.get().setUpdatedDate(date);
 				userRepository.save(user.get());
-				return new ResponseEntity<>("Message: User deleted successfully", HttpStatus.OK);
+				return new ResponseEntity<>("SMS: User deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: User does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: User does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete user,, in class UserService and its function deleteUser ",
 					e.getMessage(), e.getCause(), e);
 			return new ResponseEntity<>("User could not be Deleted.......", HttpStatus.INTERNAL_SERVER_ERROR);
 
+		}
+
+	}
+
+	// verify user
+	public ResponseEntity<Object> verifyUser(Long id, int emailToken, int smsToken) {
+		try {
+			Optional<User> user = userRepository.findByIdAndEmailTokenAndSmsToken(id, emailToken, smsToken);
+			if (user.isPresent()) {
+				System.out.println("user is : " + user.toString());
+				user.get().setStatus(true);
+				userRepository.save(user.get());
+				return new ResponseEntity<>("user has been verified ", HttpStatus.OK);
+			} else
+				return new ResponseEntity<>("incorrect verification details were entered", HttpStatus.NOT_FOUND);
+
+		} catch (Exception e) {
+			System.out.println(e.getCause());
+			return new ResponseEntity<>("could not verify user please try again later",
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}

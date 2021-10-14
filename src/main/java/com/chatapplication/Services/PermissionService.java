@@ -114,9 +114,9 @@ public class PermissionService {
 				String date = simpleDateFormat.format(new Date());
 				permission.get().setUpdatedDate(date);
 				permissionRepository.save(permission.get());
-				return new ResponseEntity<>("Message: Permission deleted successfully", HttpStatus.OK);
+				return new ResponseEntity<>("SMS: Permission deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: Permission does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: Permission does not exists ", HttpStatus.NOT_FOUND);
 
 		} catch (Exception e) {
 			return new ResponseEntity<>("Permission could not be Deleted..Due to some error.....",

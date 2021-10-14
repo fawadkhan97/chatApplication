@@ -1,14 +1,9 @@
 package com.chatapplication.Model.Interface;
 
-import lombok.Data;
-
-import java.io.Serializable;
-
-@Data
-public class CategoryDTO implements Serializable {
+public class PrivilegeDTO {
 	private Long id;
 	private String name;
-	private boolean status;
+	private boolean Status;
 	private String createdDate;
 	private String updatedDate;
 }

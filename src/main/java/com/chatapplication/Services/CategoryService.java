@@ -34,7 +34,7 @@ public class CategoryService {
 			log.info("categorys in db are ", categorys);
 			// check if database is empty
 			if (categorys.isEmpty()) {
-				return new ResponseEntity<>("Message:  Categorys are empty", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS:  Categorys are empty", HttpStatus.NOT_FOUND);
 			} else {
 				return new ResponseEntity<>(categorys, HttpStatus.OK);
 			}
@@ -144,9 +144,9 @@ public class CategoryService {
 				String date = simpleDateFormat.format(new Date());
 				category.get().setUpdatedDate(date);
 				categoryRepository.save(category.get());
-				return new ResponseEntity<>("Message: Category deleted successfully", HttpStatus.OK);
+				return new ResponseEntity<>("SMS: Category deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: Category does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: Category does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete category,, in class CategoryService and its function deleteCategory ",

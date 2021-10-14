@@ -28,6 +28,9 @@ public class User {
 	private String createdDate;
 	private String updatedDate;
 	private boolean status;
+	private String phoneNumber;
+	private int emailToken;
+	private int smsToken;
 
 	@OneToMany(targetEntity = Chat.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = false)

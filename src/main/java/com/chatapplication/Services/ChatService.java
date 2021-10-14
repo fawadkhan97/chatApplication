@@ -112,7 +112,7 @@ public class ChatService {
 				chatRepository.save(chat.get());
 				return new ResponseEntity<>("chat has been Deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: Chat does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: Chat does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error("some error has occurred during Chat Deletion in class ChatService and its function DeleteChat ",
 					e.getMessage());

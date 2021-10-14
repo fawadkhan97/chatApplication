@@ -16,7 +16,12 @@ public class UserDTO implements Serializable {
 	private String email;// User email
 	private int age;// User age
 	private String password; // User Password
+	private String createdDate;
+	private String updatedDate;
+	private String phoneNumber;
+	private String status;
 	private List<ChatDTO> chat = new ArrayList<>();
 	private List<CategoryDTO> categories = new ArrayList<>();
+	private List<RoleDTO> roles = new ArrayList<>();
 
 }
