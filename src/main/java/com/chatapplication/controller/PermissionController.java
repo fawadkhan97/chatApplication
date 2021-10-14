@@ -38,7 +38,7 @@ public class PermissionController {
 			if (authorize(authValue)) {
 				return permissionService.getAllPermission();
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -52,7 +52,7 @@ public class PermissionController {
 			if (authorize(authValue)) {
 				return permissionService.getPermissionById(id);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -66,7 +66,7 @@ public class PermissionController {
 			if (authorize(authValue)) {
 				return permissionService.savePermission(permissions);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -86,7 +86,7 @@ public class PermissionController {
 			if (authorize(authValue)) {
 				return permissionService.updatePermission(permission);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
@@ -99,7 +99,7 @@ public class PermissionController {
 			if (authorize(authValue)) {
 				return permissionService.deletePermission(id);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}

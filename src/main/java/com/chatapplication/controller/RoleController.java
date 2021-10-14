@@ -36,7 +36,7 @@ public class RoleController {
 			if (authorize(authValue)) {
 				return roleService.getAllRoles();
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -50,7 +50,7 @@ public class RoleController {
 			if (authorize(authValue)) {
 				return roleService.getRoleById(id);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -65,7 +65,7 @@ public class RoleController {
 			if (authorize(authValue)) {
 				return roleService.addRole(role);
 			} else {
-				return new ResponseEntity<>("Message: Not authorize", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS: Not authorize", HttpStatus.UNAUTHORIZED);
 			}
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
@@ -80,7 +80,7 @@ public class RoleController {
 			if (authorize(authValue)) {
 				return roleService.updateRole(categories);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}
@@ -92,7 +92,7 @@ public class RoleController {
 			if (authorize(authValue)) {
 				return roleService.deleteRole(id);
 			} else
-				return new ResponseEntity<>("Message:  not authorize ", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>("SMS:  not authorize ", HttpStatus.UNAUTHORIZED);
 		} else {
 			return new ResponseEntity<>("Incorrect authorization key ", HttpStatus.UNAUTHORIZED);
 		}

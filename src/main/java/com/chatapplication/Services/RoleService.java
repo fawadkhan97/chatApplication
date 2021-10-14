@@ -134,9 +134,9 @@ public class RoleService {
 				String date = simpleDateFormat.format(new Date());
 				role.get().setUpdatedDate(date);
 				roleRepository.save(role.get());
-				return new ResponseEntity<>("Message: Role deleted successfully", HttpStatus.OK);
+				return new ResponseEntity<>("SMS: Role deleted successfully", HttpStatus.OK);
 			} else
-				return new ResponseEntity<>("Message: Role does not exists ", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("SMS: Role does not exists ", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			log.error(
 					"some error has occurred while trying to Delete role,, in class RoleService and its function deleteRole ",
