@@ -2,7 +2,6 @@ package com.chatapplication.controller;
 
 import java.util.List;
 
-import com.chatapplication.Model.entity.SMS;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -37,9 +36,13 @@ public class UserController {
 	}
 
 	/**
+	 * @Author "Fawad"
+	 * @Description "Login it takes username and password from frontend then check
+	 *              from database by calling object with email"
 	 * @param userName
 	 * @param password
-	 * @author Fawad Khan
+	 * @createdDate 10-oct-2021
+	 * @return
 	 */
 	@GetMapping("/login")
 	public ResponseEntity<Object> login(@RequestParam(value = "username") String userName,
@@ -48,10 +51,14 @@ public class UserController {
 	}
 
 	/**
-	 * 
+	 * @Author "Fawad khan"
+	 * @Description "Display all user from db in a list if present which can be then
+	 *              displayed on screen"
 	 * @param authValue
-	 * @return
+	 * @createdDate 10-oct-2021
+	 * @return list of users
 	 */
+
 	@GetMapping("/all")
 	public ResponseEntity<Object> users(@RequestHeader(value = "Authorization", required = false) String authValue) {
 		if (authValue != null) {
@@ -66,10 +73,11 @@ public class UserController {
 	}
 
 	/**
-	 * 
+	 * @author Fawad khan
 	 * @param authValue
 	 * @param user
-	 * @return
+	 * @createdDate 10-oct-2021
+	 * @return added user object
 	 */
 	@PostMapping("/add")
 	public ResponseEntity<Object> addUser(@RequestHeader(value = "Authorization", required = false) String authValue,
@@ -86,6 +94,14 @@ public class UserController {
 
 	}
 
+	/**
+	 * 
+	 * @param userid
+	 * @param emailToken
+	 * @param smsToken
+	 * @createdDate 14-oct-2021
+	 * @return String of User verified or not
+	 */
 	@GetMapping("/verify")
 	public ResponseEntity<Object> verifyUser(@RequestHeader(value = "id") Long userid,
 			@RequestHeader(value = "emailToken") int emailToken, @RequestHeader(value = "smsToken") int smsToken) {
@@ -99,7 +115,8 @@ public class UserController {
 	 * @param authValue
 	 * @param userid
 	 * @param chatList
-	 * @return
+	 * @createdDate 10-oct-2021
+	 * @return List of added chats
 	 */
 	@PostMapping("/add/{userid}/chat")
 	public ResponseEntity<Object> addUserChats(
@@ -115,6 +132,13 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param authValue
+	 * @param userid
+	 * @createdDate 12-oct-2021
+	 * @return user Chats and categories
+	 */
 	@GetMapping("/get/{userid}/chatsAndCategories")
 	public ResponseEntity<Object> getUserschats(
 			@RequestHeader(value = "Authorization", required = false) String authValue, @PathVariable Long userid) {
@@ -133,7 +157,8 @@ public class UserController {
 	 * 
 	 * @param authValue
 	 * @param id
-	 * @return
+	 * @createdDate 10-oct-2021
+	 * @return user object
 	 */
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Object> getUser(@RequestHeader(value = "Authorization", required = false) String authValue,
@@ -149,6 +174,13 @@ public class UserController {
 		}
 	}
 
+	/**
+	 *
+	 * @param authValue
+	 * @param id
+	 * @param message
+	 * @createdDate 13-oct-2021
+	 */
 	@PostMapping("/{id}/sendSms")
 	public ResponseEntity<Object> sendSms(@RequestHeader(value = "Authorization", required = false) String authValue,
 			@PathVariable Long id, @RequestBody String message) {
@@ -167,6 +199,7 @@ public class UserController {
 	 * 
 	 * @param authValue
 	 * @param user
+	 * @createdDate 10-oct-2021
 	 * @return
 	 */
 	@PutMapping("/update")
@@ -186,6 +219,7 @@ public class UserController {
 	 * 
 	 * @param authValue
 	 * @param id
+	 * @createdDate 10-oct-2021
 	 * @return
 	 */
 	@DeleteMapping("delete/{id}")

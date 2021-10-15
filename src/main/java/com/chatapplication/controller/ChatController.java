@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * * @author fawad khan * @createdDate 12-oct-2021
+ */
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
@@ -18,10 +21,22 @@ public class ChatController {
 	private static final String DEFAULT_AUTH_VALUE = "chat12345";
 	private final ChatService chatService;
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 10-oct-2021
+	 * 
+	 * @param chatService
+	 */
 	public ChatController(ChatService chatService) {
 		this.chatService = chatService;
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 12-oct-2021
+	 * @param authValue
+	 * @return
+	 */
 	// check whether user is authorized or not
 	public Boolean authorize(String authValue) {
 		return DEFAULT_AUTH_VALUE.equals(authValue);
@@ -30,7 +45,8 @@ public class ChatController {
 	/**
 	 *
 	 * @param authValue
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 12-oct-2021
 	 */
 	@GetMapping("/all")
 	public ResponseEntity<Object> chatList(@RequestHeader(required = false, value = "authorization") String authValue) {
@@ -45,7 +61,8 @@ public class ChatController {
 	 *
 	 * @param authValue
 	 * @param id
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 12-oct-2021
 	 */
 	@GetMapping("/get/id/{id}")
 	public ResponseEntity<Object> getChatById(@RequestHeader(value = "Authorization") String authValue,
@@ -61,7 +78,8 @@ public class ChatController {
 	 *
 	 * @param authValue
 	 * @param chats
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 12-oct-2021
 	 */
 	@PutMapping("/update")
 	public ResponseEntity<Object> update(@RequestHeader(value = "Authorization", required = false) String authValue,
@@ -76,7 +94,8 @@ public class ChatController {
 	 *
 	 * @param authValue
 	 * @param id
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 12-oct-2021
 	 */
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> delete(@RequestHeader(value = "Authorization", required = false) String authValue,

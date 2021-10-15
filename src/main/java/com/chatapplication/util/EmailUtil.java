@@ -6,6 +6,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author fawad khan
+ * @createdDate 14-oct-2021
+ */
 @Service
 public class EmailUtil {
 	final private JavaMailSender javaMailSender;
@@ -16,6 +20,14 @@ public class EmailUtil {
 	public EmailUtil(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
+
+	/**
+	 * @author fawad khan
+	 * @createdDate 14-oct-2021
+	 * @param toEmail
+	 * @param token
+	 * @return
+	 */
 	public ResponseEntity<Object> sendMail(String toEmail, int token) {
 
 		try {

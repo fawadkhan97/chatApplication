@@ -8,14 +8,21 @@ import org.springframework.http.ResponseEntity;
 
 public class SMSUtil {
 
-	private final String ACCOUNT_SID = "AC41c995234967e84c7dd650af8ab28d0f";
+	private final String ACCOUNT_SID = System.getenv("twilioAcc_SID");;
 
-	private final String AUTH_TOKEN = "08a6f98e79e0a553b63bce5ebec8c6db";
+	private final String AUTH_TOKEN = System.getenv("twilioToken");;
 
-	private final String FROM_NUMBER = "+13158402662";
+	private final String FROM_NUMBER = System.getenv("twilio_Number");
 
 	private final String sms = "otp is : ";
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 14-oct-2021
+	 * @param phoneNumber
+	 * @param sms
+	 * @return
+	 */
 	// send general sms (get sms body from user)
 	public ResponseEntity<Object> sendSMS(String phoneNumber, String sms) {
 		try {
@@ -33,6 +40,13 @@ public class SMSUtil {
 
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
+	 * @param phoneNumber
+	 * @param token
+	 * @return
+	 */
 	// send otp sms
 	public ResponseEntity<Object> sendSMS(String phoneNumber, int token) {
 		try {

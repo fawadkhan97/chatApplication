@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author fawad khan
+ * @createdDate 13-oct-2021
+ */
 @RestController
 @RequestMapping("/permission")
 public class PermissionController {
@@ -24,7 +28,9 @@ public class PermissionController {
 
 	/**
 	 * check permission is authorized or not
-	 *
+	 * 
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
 	 * @param authValue
 	 * @return
 	 */
@@ -32,6 +38,13 @@ public class PermissionController {
 		return defaultAuthValue.equals(authValue);
 	}
 
+	/**
+	 * 
+	 * @param authValue
+	 * @return
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	@GetMapping("/all")
 	public ResponseEntity<Object> getAllPermission(@RequestHeader("Authorization") String authValue) {
 		if (authValue != null) {
@@ -45,6 +58,13 @@ public class PermissionController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param authValue
+	 * @param id
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Object> getPermission(@RequestHeader("Authorization") String authValue,
 			@PathVariable Long id) {
@@ -59,6 +79,13 @@ public class PermissionController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param authValue
+	 * @param permissions
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	@PostMapping("/add")
 	public ResponseEntity<Object> addPermission(@RequestHeader("Authorization") String authValue,
 			@RequestBody List<Permission> permissions) {
@@ -77,7 +104,8 @@ public class PermissionController {
 	 *
 	 * @param authValue
 	 * @param permission
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
 	 */
 	@PutMapping("/update")
 	public ResponseEntity<Object> updatePermission(@RequestHeader("Authorization") String authValue,
@@ -92,6 +120,13 @@ public class PermissionController {
 		}
 	}
 
+	/**
+	 * 
+	 * @param authValue
+	 * @param id
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deletePermission(@RequestHeader("Authorization") String authValue,
 			@PathVariable long id) {

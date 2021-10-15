@@ -14,6 +14,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author fawad khan
+ * @createdDate 11-oct-2021
+ */
 @Service
 public class CategoryService {
 
@@ -25,8 +29,9 @@ public class CategoryService {
 	}
 
 	/**
-	 *
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
+	 * @return list of available categories
 	 */
 	public ResponseEntity<Object> listAllCategory() {
 		try {
@@ -49,9 +54,10 @@ public class CategoryService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
-	 * @return
+	 * @return specific category object
 	 */
 	public ResponseEntity<Object> getCategoryById(Long id) {
 		try {
@@ -73,9 +79,10 @@ public class CategoryService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param categories
-	 * @return
+	 * @return saved category
 	 */
 	public ResponseEntity<Object> saveCategory(List<Category> categories) {
 		try {
@@ -102,7 +109,8 @@ public class CategoryService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param categories
 	 * @return
 	 */
@@ -127,7 +135,8 @@ public class CategoryService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */

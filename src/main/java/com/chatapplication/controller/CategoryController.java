@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Fawad khan
+ * @createdDate 11-oct-2021
+ */
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -19,8 +23,8 @@ public class CategoryController {
 	}
 
 	/**
-	 * check category is authorized or not
-	 *
+	 * @description check user is authorized or not
+	 * @createdDate 11-oct-2021
 	 * @param authValue
 	 * @return
 	 */
@@ -31,6 +35,7 @@ public class CategoryController {
 	/**
 	 *
 	 * @param authValue
+	 * @createdDate 11-oct-2021
 	 * @return
 	 */
 	@GetMapping("/all")
@@ -50,6 +55,8 @@ public class CategoryController {
 	 *
 	 * @param authValue
 	 * @param categories
+	 * @author fawad khan
+	  * @createdDate 11-oct-2021
 	 * @return
 	 */
 	@PostMapping("/add")
@@ -70,7 +77,9 @@ public class CategoryController {
 	 *
 	 * @param authValue
 	 * @param id
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
+
 	 */
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Object> getCategory(@RequestHeader("Authorization") String authValue, @PathVariable Long id) {
@@ -89,7 +98,8 @@ public class CategoryController {
 	 *
 	 * @param authValue
 	 * @param categories
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 */
 	@PutMapping("/update")
 	public ResponseEntity<Object> updateCategory(@RequestHeader("Authorization") String authValue,
@@ -108,7 +118,8 @@ public class CategoryController {
 	 *
 	 * @param authValue
 	 * @param id
-	 * @return
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 */
 	@DeleteMapping("delete/{id}")
 	public ResponseEntity<Object> deleteCategory(@RequestHeader("Authorization") String authValue,

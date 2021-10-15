@@ -14,6 +14,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author fawad khan
+ * @createdDate 11-oct-2021
+ */
 @Service
 public class ChatService {
 
@@ -25,7 +29,8 @@ public class ChatService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @return
 	 */
 	public ResponseEntity<Object> listAllChat() {
@@ -46,7 +51,8 @@ public class ChatService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */
@@ -69,7 +75,8 @@ public class ChatService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param chats
 	 * @return
 	 */
@@ -93,7 +100,8 @@ public class ChatService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */

@@ -4,28 +4,36 @@ import com.chatapplication.Model.entity.Permission;
 import com.chatapplication.Repository.PermissionRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author fawad khan
+ * @createdDate 13-oct-2021
+ */
 @Service
 public class PermissionService {
 
 	final private PermissionRepository permissionRepository;
 	private static final Logger log = LogManager.getLogger(PermissionService.class);
 
+	// autowiring permissionRepository
 	public PermissionService(PermissionRepository permissionRepository) {
 		this.permissionRepository = permissionRepository;
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @return list of permissions available
+	 */
 	public ResponseEntity<Object> getAllPermission() {
 
 		try {
@@ -42,6 +50,12 @@ public class PermissionService {
 		}
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @param id
+	 * @return specific permission object as specify by id
+	 */
 	public ResponseEntity<Object> getPermissionById(Long id) {
 		try {
 			Optional<Permission> permission = permissionRepository.findById(id);
@@ -61,6 +75,12 @@ public class PermissionService {
 
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @param permissions
+	 * @return saved permission object
+	 */
 	public ResponseEntity<Object> savePermission(List<Permission> permissions) {
 		try {
 			for (Permission permission : permissions) {
@@ -81,6 +101,12 @@ public class PermissionService {
 		}
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @param permissions
+	 * @return
+	 */
 	public ResponseEntity<Object> updatePermission(List<Permission> permissions) {
 		try {
 			for (Permission permission : permissions) {
@@ -101,6 +127,12 @@ public class PermissionService {
 		}
 	}
 
+	/**
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @param id
+	 * @return
+	 */
 	public ResponseEntity<String> deletePermission(Long id) {
 		try {
 			Optional<Permission> permission = permissionRepository.findById(id);

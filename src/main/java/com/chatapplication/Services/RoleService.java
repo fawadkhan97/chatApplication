@@ -1,24 +1,24 @@
 package com.chatapplication.Services;
 
-
 import com.chatapplication.Model.entity.Role;
 import com.chatapplication.Repository.RoleRepository;
-import com.chatapplication.Repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author fawad khan
+ * @createdDate 12-oct-2021
+ */
 @Service
 public class RoleService {
 	private static final Logger log = LogManager.getLogger(RoleService.class);
@@ -83,6 +83,13 @@ public class RoleService {
 
 	}
 
+	/**
+	 * @param id
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 * @return role object
+	 */
+
 	public ResponseEntity<Object> getRoleById(Long id) {
 		try {
 			Optional<Role> role = roleRepository.findById(id);
@@ -101,6 +108,12 @@ public class RoleService {
 
 	}
 
+	/**
+	 * 
+	 * @param categories
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	public ResponseEntity<Object> updateRole(List<Role> categories) {
 		try {
 			for (Role role : categories) {
@@ -121,6 +134,12 @@ public class RoleService {
 		}
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @author fawad khan
+	 * @createdDate 13-oct-2021
+	 */
 	public ResponseEntity<Object> deleteRole(Long id) {
 		try {
 			Optional<Role> role = roleRepository.findById(id);

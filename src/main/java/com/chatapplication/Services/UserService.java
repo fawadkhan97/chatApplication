@@ -26,6 +26,7 @@ import com.chatapplication.Repository.UserRepository;
 /**
  * @author Fawad khan Created Date : 08-October-2021 A service class of user
  *         connected with repository which contains user CRUD operations
+ * @createdDate 11-oct-2021
  */
 @Service
 public class UserService {
@@ -71,7 +72,8 @@ public class UserService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */
@@ -137,6 +139,8 @@ public class UserService {
 	/**
 	 * get all chats and categories of specific
 	 * 
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */
@@ -188,7 +192,8 @@ public class UserService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param userid
 	 * @param chats
 	 * @return
@@ -256,7 +261,8 @@ public class UserService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param user
 	 * @return
 	 */
@@ -296,7 +302,8 @@ public class UserService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param user
 	 * @return
 	 */
@@ -320,7 +327,8 @@ public class UserService {
 	}
 
 	/**
-	 *
+	 * @author fawad khan
+	 * @createdDate 11-oct-2021
 	 * @param id
 	 * @return
 	 */
@@ -350,7 +358,14 @@ public class UserService {
 
 	}
 
-	// verify user
+	/**
+	 * @author fawad khan
+	 * @createdDate 14-oct-2021
+	 * @param id
+	 * @param emailToken
+	 * @param smsToken
+	 * @return
+	 */
 	public ResponseEntity<Object> verifyUser(Long id, int emailToken, int smsToken) {
 		try {
 			Optional<User> user = userRepository.findByIdAndEmailTokenAndSmsToken(id, emailToken, smsToken);
