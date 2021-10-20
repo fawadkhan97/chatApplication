@@ -8,11 +8,11 @@ import org.springframework.http.ResponseEntity;
 
 public class SMSUtil {
 
-	private final String ACCOUNT_SID = System.getenv("twilioAcc_SID");;
+	private final String ACCOUNT_SID = "*********";
 
-	private final String AUTH_TOKEN = System.getenv("twilioToken");;
+	private final String AUTH_TOKEN = "3225ead31f36015a3d834897fa8606";
 
-	private final String FROM_NUMBER = System.getenv("twilio_Number");
+	private final String FROM_NUMBER = "+13158402662";
 
 	private final String sms = "otp is : ";
 
